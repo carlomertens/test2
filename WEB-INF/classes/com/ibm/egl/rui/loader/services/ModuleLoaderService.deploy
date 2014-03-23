@@ -1,0 +1,8 @@
+<deploy package="com.ibm.egl.rui.loader.services" partName="ModuleLoaderService" partType="Service" version="2">
+	<buildDescriptors>
+		<buildDescriptor name="com_ibm_egl_rui_4_2_0JavaBuildOptions" fileName="\com.ibm.egl.rui_4.2.0\EGLSource\com_ibm_egl_rui_4_2_0.eglbld" egldd="" genProject="com.ibm.egl.rui_4.2.0"/>
+		<buildDescriptor name="com_ibm_egl_rui_3_0_0JavaBuildOptions" fileName="\com.ibm.egl.rui_3.0.0\EGLSource\com_ibm_egl_rui_3_0_0.eglbld" egldd="" genProject="com.ibm.egl.rui_3.0.0"/>
+		<buildDescriptor name="com_ibm_egl_rui_4_0_0JavaBuildOptions" fileName="\com.ibm.egl.rui_4.0.0\EGLSource\com_ibm_egl_rui_4_0_0.eglbld" egldd="" genProject="com.ibm.egl.rui_4.0.0"/>
+		<buildDescriptor name="com_ibm_egl_rui_4_2_2JavaBuildOptions" fileName="\com.ibm.egl.rui_4.2.2\EGLSource\com_ibm_egl_rui_4_2_2.eglbld" egldd="" genProject="com.ibm.egl.rui_4.2.2"/>
+	</buildDescriptors>
+</deploy>

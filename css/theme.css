@@ -1,0 +1,22 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * Copyright IBM Corporation 2008. All Rights Reserved.
+ *
+ * U.S. Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA DP Schedule Contract with IBM Corp.
+ */
+
+/*************************** TextField *****************************/
+.EglRuiReset {
+	/* Use this style to null out padding, margin, border in your template elements
+		so that page specific styles don't break them.
+		- Use in all TABLE, TR and TD tags.	
+	*/
+	margin:0;
+	border:0;
+	padding:0;
+	line-height:normal;
+	font: inherit;
+	color: inherit;
+}

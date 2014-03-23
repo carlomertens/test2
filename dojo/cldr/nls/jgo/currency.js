@@ -1,0 +1,1 @@
+define("dojo/cldr/nls/jgo/currency",{"EUR_displayName":"Ʉ�?lɔ","CAD_displayName":"Ndɔ�?la-Kanandâ","XAF_symbol":"FCFA","USD_displayName":"Ndɔ�?la-Amɛlîk","XAF_displayName":"Fɛlâŋ","XXX_displayName":"ntɛ-ŋkɑ�?p yi pɛ�? kɑ�? kɛ�? j�nɛ"});

@@ -1,0 +1,1 @@
+define("dojo/cldr/nls/ti/generic",{"dateFormatItem-MMMMdd":"dd MMMM","dateFormat-medium":"dd-MMM-y G","dateFormatItem-MMdd":"dd/MM","dateFormatItem-yMM":"MM/y","dateFormat-full":"EEEEá?£ dd MMMM áˆ˜á‹“áˆ?á‰² y G","dateFormatItem-yMMMM":"MMMM y","dateFormatItem-yQQQ":"QQQ y","dateFormat-short":"dd/MM/yy GGGGG","dateFormat-long":"dd MMMM y G"});

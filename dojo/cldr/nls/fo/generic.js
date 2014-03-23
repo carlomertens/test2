@@ -1,0 +1,1 @@
+define("dojo/cldr/nls/fo/generic",{"dateFormat-medium":"dd-MM-y G","field-day-relative+-1":"ร gรฆr","field-day-relative+-2":"ร fyrradag","dateFormat-full":"EEEE dd MMMM y G","field-day-relative+0":"ร dag","field-day-relative+1":"รก morgunn","dateFormat-short":"dd-MM-yy GGGGG","field-day-relative+2":"รก yfirmorgunn","dateFormat-long":"d. MMM y G"});

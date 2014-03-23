@@ -1,0 +1,142 @@
+.themeButton, .float-right {
+	float: right !important;
+}
+
+.themeListItem .mblListItemLabel{
+	display: inline-block !important;
+}
+
+.themeButton{
+	margin-right: .5em !important;
+}
+
+.themeCheckbox{
+	margin: 1em; display:inline-block;cursor:pointer;
+}
+
+.blackberry_theme .themeCheckbox, .blackberry_theme .blackberryOpener .EglRuiTextLabel{
+	color: #fff !important;
+}  
+
+.px150btn {
+	width: 150px !important;
+}
+
+.myView {
+	max-width: 100%;
+	background-color: rgb(26, 29, 36);
+	/* fallback color if gradients are not supported */
+	background-image: -webkit-linear-gradient(top, rgb(94, 97, 103) 0%,
+		rgb(26, 29, 36) 100% ); /* For Chrome and Safari */
+	background-image: -moz-linear-gradient(top, rgb(94, 97, 103) 0%,
+		rgb(26, 29, 36) 100% ); /* For old Fx (3.6 to 15) */
+	background-image: -ms-linear-gradient(top, rgb(94, 97, 103) 0%,
+		rgb(26, 29, 36) 100% ); /* For pre-releases of IE 10*/
+	background-image: -o-linear-gradient(top, rgb(94, 97, 103) 0%,
+		rgb(26, 29, 36) 100% ); /* For old Opera (11.1 to 12.0) */
+	background-image: linear-gradient(to bottom, rgb(94, 97, 103) 0%,
+		rgb(26, 29, 36) 100% ); /* Standard syntax; must be last */
+}
+
+.myLabel {
+	display: inline;
+}
+
+.transparentOverlay.mblOverlay {
+	background-image: rgba(0, 0, 0, 0) !important;
+	background: rgba(0, 0, 0, 0) !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* Start of RWD */
+.responsiveButton {
+	width: 40px !important;
+}
+.responsiveTextLabel {
+	width: 60px !important;
+}
+
+.eglMblDatePicker .mblSpinWheelSlot{
+	width: 70px !important;
+}
+
+.eglMblDatePicker{
+	width: 222px !important;
+}
+
+#responsiveMap{
+	width: 300px !important;
+	height: 300px !important;
+}
+	
+@media all and (min-width: 400px){
+	#responsiveMap{
+		width: 350px !important;
+	}
+	.responsiveButton {
+		width: 80px !important;
+	}
+	.responsiveTextLabel {
+		width: 80px !important;
+	}
+	.eglMblDatePicker .mblSpinWheelSlot{
+		width: 100px !important;
+	}
+	.eglMblDatePicker{
+		width: 312px !important;
+	}
+}
+
+@media all and (min-width: 600px){
+	#responsiveMap{
+		width: 500px !important;
+	}
+	.responsiveButton {
+		width: 150px !important;
+	}
+	.responsiveTextLabel {
+		width: 200px !important;
+	}
+}
+/* End of RWD */
+
+.mySwapView{
+	min-height: 100px !important;
+}
+
+.sampleViews{
+	min-height: 600px !important;
+}
+
+#eventsLogView{
+	width: 100%;
+	display: block;
+	height: 150px;
+	background:#fff;
+	text-align:left;
+	border-radius: 5px;
+}
+
+.fullBox{
+	width: 92%; margin: 0 auto; padding-top:10px;
+}
+
+.fullBox .EglRuiBoxTable{
+	width: 100% !important;
+}
+
+.detectList{
+	min-width: 200px;
+	text-align: left;
+}
+
+.mblListItem .mblSwitch.mySwitch{
+	position: relative;
+	top:0; right:0;
+}
+
+.detectView{
+	overflow:hidden;
+	height:150px !important;
+	width: 250px !important;
+}

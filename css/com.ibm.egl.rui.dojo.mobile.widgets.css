@@ -1,0 +1,29 @@
+span.eglMblCheckbox input.mblCheckBox{
+	margin-top: .2em; vertical-align: middle; -webkit-transform : none; display: inline-block;
+	transform : none;
+}
+
+.mblHeading{
+	overflow-x: visible !important;
+	overflow-y: visible !important;
+}
+
+/* 
+	enhance dojox/mobile/TabBar to support automatically
+	increase to multiple rows
+*/
+.mblTabBar {
+	height: auto !important;
+}
+
+*{
+-webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+
+.eglMblCheckbox{
+	cursor:pointer;
+}
+
+input.mblCheckBox {
+	vertical-align:middle;
+}

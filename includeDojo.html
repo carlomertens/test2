@@ -1,0 +1,48 @@
+<script type="text/javascript">
+	var dojoConfig = {
+			// Below theme options are available for dojo mobile widgets(Case-sensitive):
+			// Android, Holodark, BlackBerry, Custom, iPhone, iPad
+			// Leave it empty will let dojo mobile automatically load 
+			// device associated theme
+			mblUserAgent: '', 
+			baseUrl : '.',
+			packages : [ 
+		  	{
+				name : 'dojo',
+				location : 'dojo'
+		  	}, 
+		  	{
+				name : 'dijit',
+				location : 'dijit'
+			}, 
+			{
+				name : 'dojox',
+				location : 'dojox'
+			} ],
+			locale: egl__htmlLocale.replace(/_/, "-").toLowerCase()	
+	};
+	//alert( dojoConfig.locale );
+	egl.urlPrefix = "";
+	egl.dojoProvider = "Local Workspace, 1.9.1, Dojo Mobile Runtime";
+	egl.WebKit = !egl.IE && (window.navigator.userAgent.indexOf("WebKit") >= 0);
+	egl.XulRunner = !egl.Firefox && !egl.WebKit && (window.navigator.userAgent.indexOf("Gecko") >= 0);
+</script>
+
+<script type="text/javascript" src="dojo/egldojo.js"></script>
+<script type="text/javascript">
+	var deps = [
+		"dojox/mobile", "dojox/mobile/deviceTheme"
+	];
+	
+	if( !egl.WebKit ){ deps.push( 'dojox/mobile/compat' ); }
+	
+	deps.push(
+		"dojo/on", "dojo/touch", "dojo/dom-construct","dojo/dom-style","dojo/dom-attr","dojo/_base/lang",
+		"dojo/mobile/utility/Synchronor", 
+		"dojo/mobile/utility/DisplayController", 
+		"dojo/mobile/utility/EGLEnhancements"
+	);
+	
+	require( deps );
+</script>
+<link href="css/com.ibm.egl.rui.dojo.mobile.widgets.css" type="text/css" rel="stylesheet" id="EGLMobileTheme_CSS" />

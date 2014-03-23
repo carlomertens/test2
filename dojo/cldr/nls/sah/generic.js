@@ -1,0 +1,1 @@
+define("dojo/cldr/nls/sah/generic",{"field-day-relative+-1":"Б�?ҕ�?һ�?�?","field-day-relative+0":"Бүгүн","field-day-relative+-2":"Илл�?р�?�? күн","field-day-relative+1":"Сар�?ын","field-day-relative+2":"Өйүүн"});
