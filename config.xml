@@ -16,6 +16,8 @@
         Imtech ICT Business Solutions BV
     </author>
 
+	<gap:plugin name="com.phonegap.plugins.barcodescanner"/>
+	
 	<content src="index.html" />
 	
     <!--

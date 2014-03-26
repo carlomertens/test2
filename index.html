@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<!-- Generated at Sun Mar 23 11:17:19 CET 2014 by EGL 1.0.1.v20131117_0007 -->
+<!-- Generated at Wed Mar 26 21:07:35 CET 2014 by EGL 1.0.1.v20131117_0007 -->
 <title>EGL Mobile Gallery</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
-egl__contextRoot="com.ibm.egl.rui.dojo.mobile.samples85";
+egl__contextRoot="eu.imtech.firstproject85";
 egl__defaultRuntimeMessagesLocale="en_US";
 egl__htmlLocale="en_US";
 </script>
@@ -16,8 +16,8 @@ egl = function() { };
 egl.eze$$rscBundles = {};
 egl.eze$$runtimeProperties = {};
 </script>
-<script src="/com.ibm.egl.rui.dojo.mobile.samples85/egl/messages/RuiMessages-en_US.js" type="text/javascript"> </script>
-<script src="/com.ibm.egl.rui.dojo.mobile.samples85/rununit-eze$$rt.js" type="text/javascript"> </script>
+<script src="/eu.imtech.firstproject85/egl/messages/RuiMessages-en_US.js" type="text/javascript"> </script>
+<script src="/eu.imtech.firstproject85/rununit-eze$$rt.js" type="text/javascript"> </script>
 <script>
 // Included file: egl.js
 egl.lastFunctionEntered="???";
@@ -11751,6 +11751,30 @@ _53.set(_52,"tabindex",0);
 <!-- End of included file: dojo/mobile/widgets/DojoMobileBase.html -->
 
 <script>
+// Included file: dojo/mobile/widgets/DojoMobileButton.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileButton","dojo.mobile.widgets","DojoMobileBase","button",{"eglBaseClass":"eglMblBtn","standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout","change"],"constructor":function(){
+var _1=this;
+require(["dojox/mobile/Button"],function(){
+_1._safeRender();
+});
+},"createDojoWidget":function(_2,_3){
+var _4=this;
+_2.innerHTML=_4.text||"";
+_4.domNode=_2;
+_4.dojoWidget=new dojox.mobile.Button(_3,_2);
+this.dojoWidget.domNode.innerHTML=this.text||"";
+_4.synchronor.trigger(_4,"SYN_READY");
+_4.dojoWidget.startup();
+},"setText":function(_5){
+this.text=_5;
+if(this.domNode){
+this.domNode.innerHTML=this.text;
+}
+}});
+
+// End of included file: dojo/mobile/widgets/DojoMobileButton.js
+</script>
+<script>
 // Included file: dojo/mobile/widgets/DojoMobileContainer.js
 egl.defineWidget("dojo.mobile.widgets","DojoMobileContainer","dojo.mobile.widgets","DojoMobileBase","div",{"_appendChild":function(_1,_2){
 var _3=this._getContainerWidget(_2);
@@ -11895,135 +11919,6 @@ return _26?_26:(this.containerWidget?this.containerWidget:this.dojoWidget);
 }});
 
 // End of included file: dojo/mobile/widgets/DojoMobileContainer.js
-</script>
-<script>
-// Included file: dojo/mobile/widgets/DojoMobileOpener.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileOpener","dojo.mobile.widgets","DojoMobileContainer","div",{"eglBaseClass":"eglMblOpener","constructor":function(){
-var _1=this;
-_1.isModal=false;
-_1.children=[];
-require(["dojox/mobile/Opener"],function(op){
-_1._safeRender();
-});
-},"createDojoWidget":function(_3,_4){
-var _5=this;
-_3.style.minHeight="2em";
-_3.style.zIndex="10001";
-_5._addTabIndex(_3);
-if(_5.isModal){
-_5.dojoWidget=new dojox.mobile.Opener(_4,_3);
-}else{
-_5.dojoWidget=new dojox.mobile.Overlay(_4,_3);
-}
-_5.containerWidget=_5.dojoWidget;
-_5.synchronor.trigger(_5,"SYN_READY");
-_5.synchronor.wait(_5.children,"SYN_READY",function(){
-if(_5.children){
-_5.setChildren(_5.children);
-}
-if(_5.dojoWidget.startup){
-_5.dojoWidget.startup();
-}
-});
-},"removeChildren":function(_6){
-var _7=this._getContainerWidget(_6);
-this._removeChildren(1,_7);
-},"showOpener":function(_8,_9){
-var _a=this;
-try{
-if(_a.dojoWidget){
-_a.dojoWidget.show(_8?(_8.domNode||(_8.dojoWidget&&_8.dojoWidget.domNode)):null,[_9]);
-require(["dojo/sniff","dojo/mobile/utility/DisplayController","dojo/mobile/utility/BrowserUtility"],function(_b,dc,bu){
-if(_a.dojoWidget instanceof dojox.mobile.Tooltip){
-if(_b("ios")||_b("webkit")){
-dc.forceWidthUpdate(_a);
-}
-}
-});
-}
-}
-catch(e){
-console.error(e);
-}
-},"hideOpener":function(){
-var _e=this;
-if(_e.dojoWidget){
-_e.dojoWidget.hide();
-}
-},"setIsModal":function(_f){
-this.isModal=_f||false;
-},"getIsModal":function(){
-return this.isModal;
-}});
-
-// End of included file: dojo/mobile/widgets/DojoMobileOpener.js
-</script>
-<script>
-// Included file: dojo/mobile/widgets/DojoMobileList.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileList","dojo.mobile.widgets","DojoMobileContainer","ul",{"standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout"],"eglBaseClass":"eglMblList","constructor":function(){
-var _1=this;
-_1.style="Rounded Rectangle";
-_1.acceptChildrenTypes={"dojo.mobile.widgets.DojoMobileListCategory":true,"dojo.mobile.widgets.DojoMobileListItem":true};
-_1._safeRender();
-},"createDojoWidget":function(_2,_3){
-this.eglParent=_2;
-if(this.style){
-this._createDojoWidget(_2,_3);
-}
-},"_createDojoWidget":function(_4,_5){
-var _6=this;
-var _4=_6.eglParent;
-if(!_6.style){
-return;
-}
-_6.dojoWidget={"domNode":_4};
-if(_6.style=="Edge to Edge"||(_6.style=="Rounded Rectangle"&&egl.IE)){
-_6.dojoWidget=new dojox.mobile.EdgeToEdgeList(_5,_4);
-}else{
-if(_6.style=="Rounded Rectangle"){
-_6.dojoWidget=new dojox.mobile.RoundRectList(_5,_4);
-if(typeof (window.eze$$device)=="string"&&window.eze$$device=="Android"){
-_6.dojoWidget.domNode.style.backgroundColor="transparent";
-}
-}else{
-throw _6.eze$$typename+".construction: Cannot create Dojo Mobile List with this style "+_6.style;
-}
-}
-_6.containerWidget=_6.dojoWidget;
-_6.synchronor.trigger(_6,"SYN_READY");
-_6.synchronor.wait(_6.children,"SYN_READY",function(){
-_6.setChildren(_6.children,_6.containerWidget);
-});
-},"setChildren":function(_7,_8){
-var _9=this;
-egl.dojo.mobile.widgets.DojoMobileContainer.prototype.setChildren.call(this,_7,_8);
-if(_9.dojoWidget&&_9.children&&_9.children.length>0){
-require(["dojo/ready"],function(_a){
-_a(function(){
-for(var i=0;i<_9.children.length;++i){
-if(_9.children[i].dojoWidget&&_9.children[i].dojoWidget.startup){
-_9.children[i].dojoWidget.startup();
-}
-}
-});
-});
-}
-},"setStyle":function(_c){
-if(this.dojoWidget){
-if(this.style!=_c){
-throw this.eze$$typename+".setStyle: Cannot change style after construction";
-}
-}else{
-this.style=_c;
-}
-},"getStyle":function(){
-return this.style;
-},"_appendChild":function(_d){
-egl.dojo.mobile.widgets.DojoMobileContainer.prototype._appendChild.call(this,_d);
-_d.setLogicalParent(this);
-}});
-
-// End of included file: dojo/mobile/widgets/DojoMobileList.js
 </script>
 <script>
 // Included file: dojo/mobile/widgets/DojoMobileToolBarButton.js
@@ -12494,30 +12389,6 @@ _46._appliedSafeStartup=true;
 // End of included file: dojo/mobile/widgets/DojoMobileView.js
 </script>
 <script>
-// Included file: dojo/mobile/widgets/DojoMobileButton.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileButton","dojo.mobile.widgets","DojoMobileBase","button",{"eglBaseClass":"eglMblBtn","standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout","change"],"constructor":function(){
-var _1=this;
-require(["dojox/mobile/Button"],function(){
-_1._safeRender();
-});
-},"createDojoWidget":function(_2,_3){
-var _4=this;
-_2.innerHTML=_4.text||"";
-_4.domNode=_2;
-_4.dojoWidget=new dojox.mobile.Button(_3,_2);
-this.dojoWidget.domNode.innerHTML=this.text||"";
-_4.synchronor.trigger(_4,"SYN_READY");
-_4.dojoWidget.startup();
-},"setText":function(_5){
-this.text=_5;
-if(this.domNode){
-this.domNode.innerHTML=this.text;
-}
-}});
-
-// End of included file: dojo/mobile/widgets/DojoMobileButton.js
-</script>
-<script>
 // Included file: dojo/mobile/utility/BrowserLibNative.js
 egl.defineClass("dojo.mobile.utility","BrowserLibNative",{"getDJConf":function(_1){
 if(!_1){
@@ -12838,36 +12709,86 @@ return this.transition;
 // End of included file: dojo/mobile/widgets/DojoMobileListItem.js
 </script>
 <script>
-// Included file: dojo/mobile/widgets/DojoMobileListCategory.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileListCategory","dojo.mobile.widgets","DojoMobileBase","li",{"standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout"],"eglBaseClass":"eglMblListCategory","constructor":function(){
-var _1=this;
-this.style="Rounded Rectangle";
-_1._safeRender();
-},"createDojoWidget":function(_2,_3){
-var _4=this;
-if(this.style=="Edge to Edge"){
-this.dojoWidget=new dojox.mobile.EdgeToEdgeCategory(_3,_2);
-}else{
-this.dojoWidget=new dojox.mobile.RoundRectCategory(_3,_2);
-}
-this.dojoWidget.domNode.style.listStyleType="none";
-_4.synchronor.trigger(_4,"SYN_READY");
-},"setTitle":function(_5){
-this._safeSet("label",_5);
-if(this.dojoWidget){
-this.dojoWidget.domNode.innerHTML=_5;
-}
-},"getTitle":function(){
-return this.label;
-},"setLogicalParent":function(_6){
-var _7=this;
-this.logicalParent=_6;
-if(_6.style){
-this.style=_6.style;
-}
+// Included file: libraries/fastclick_js.js
+egl.defineClass("libraries","fastclick_js",{"constructor":function(){
+},"init":function(){
+FastClick.attach(document.body);
 }});
 
-// End of included file: dojo/mobile/widgets/DojoMobileListCategory.js
+// End of included file: libraries/fastclick_js.js
+</script>
+
+<!-- Included file: libraries/includeFastClick.html -->
+<script type="text/javascript" src="libraries/fastclick.js"></script>
+
+<!-- End of included file: libraries/includeFastClick.html -->
+
+<script>
+// Included file: dojo/mobile/widgets/DojoMobileList.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileList","dojo.mobile.widgets","DojoMobileContainer","ul",{"standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout"],"eglBaseClass":"eglMblList","constructor":function(){
+var _1=this;
+_1.style="Rounded Rectangle";
+_1.acceptChildrenTypes={"dojo.mobile.widgets.DojoMobileListCategory":true,"dojo.mobile.widgets.DojoMobileListItem":true};
+_1._safeRender();
+},"createDojoWidget":function(_2,_3){
+this.eglParent=_2;
+if(this.style){
+this._createDojoWidget(_2,_3);
+}
+},"_createDojoWidget":function(_4,_5){
+var _6=this;
+var _4=_6.eglParent;
+if(!_6.style){
+return;
+}
+_6.dojoWidget={"domNode":_4};
+if(_6.style=="Edge to Edge"||(_6.style=="Rounded Rectangle"&&egl.IE)){
+_6.dojoWidget=new dojox.mobile.EdgeToEdgeList(_5,_4);
+}else{
+if(_6.style=="Rounded Rectangle"){
+_6.dojoWidget=new dojox.mobile.RoundRectList(_5,_4);
+if(typeof (window.eze$$device)=="string"&&window.eze$$device=="Android"){
+_6.dojoWidget.domNode.style.backgroundColor="transparent";
+}
+}else{
+throw _6.eze$$typename+".construction: Cannot create Dojo Mobile List with this style "+_6.style;
+}
+}
+_6.containerWidget=_6.dojoWidget;
+_6.synchronor.trigger(_6,"SYN_READY");
+_6.synchronor.wait(_6.children,"SYN_READY",function(){
+_6.setChildren(_6.children,_6.containerWidget);
+});
+},"setChildren":function(_7,_8){
+var _9=this;
+egl.dojo.mobile.widgets.DojoMobileContainer.prototype.setChildren.call(this,_7,_8);
+if(_9.dojoWidget&&_9.children&&_9.children.length>0){
+require(["dojo/ready"],function(_a){
+_a(function(){
+for(var i=0;i<_9.children.length;++i){
+if(_9.children[i].dojoWidget&&_9.children[i].dojoWidget.startup){
+_9.children[i].dojoWidget.startup();
+}
+}
+});
+});
+}
+},"setStyle":function(_c){
+if(this.dojoWidget){
+if(this.style!=_c){
+throw this.eze$$typename+".setStyle: Cannot change style after construction";
+}
+}else{
+this.style=_c;
+}
+},"getStyle":function(){
+return this.style;
+},"_appendChild":function(_d){
+egl.dojo.mobile.widgets.DojoMobileContainer.prototype._appendChild.call(this,_d);
+_d.setLogicalParent(this);
+}});
+
+// End of included file: dojo/mobile/widgets/DojoMobileList.js
 </script>
 <script>
 // Included file: com/ibm/egl/rui/loader/Helper.js
@@ -13020,6 +12941,116 @@ _28.eze$$asynch=egl.eze$$dynamicLoadAsynch==undefined?true:egl.eze$$dynamicLoadA
 // End of included file: com/ibm/egl/rui/loader/Helper.js
 </script>
 <script>
+// Included file: dojo/mobile/widgets/DojoMobileOpener.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileOpener","dojo.mobile.widgets","DojoMobileContainer","div",{"eglBaseClass":"eglMblOpener","constructor":function(){
+var _1=this;
+_1.isModal=false;
+_1.children=[];
+require(["dojox/mobile/Opener"],function(op){
+_1._safeRender();
+});
+},"createDojoWidget":function(_3,_4){
+var _5=this;
+_3.style.minHeight="2em";
+_3.style.zIndex="10001";
+_5._addTabIndex(_3);
+if(_5.isModal){
+_5.dojoWidget=new dojox.mobile.Opener(_4,_3);
+}else{
+_5.dojoWidget=new dojox.mobile.Overlay(_4,_3);
+}
+_5.containerWidget=_5.dojoWidget;
+_5.synchronor.trigger(_5,"SYN_READY");
+_5.synchronor.wait(_5.children,"SYN_READY",function(){
+if(_5.children){
+_5.setChildren(_5.children);
+}
+if(_5.dojoWidget.startup){
+_5.dojoWidget.startup();
+}
+});
+},"removeChildren":function(_6){
+var _7=this._getContainerWidget(_6);
+this._removeChildren(1,_7);
+},"showOpener":function(_8,_9){
+var _a=this;
+try{
+if(_a.dojoWidget){
+_a.dojoWidget.show(_8?(_8.domNode||(_8.dojoWidget&&_8.dojoWidget.domNode)):null,[_9]);
+require(["dojo/sniff","dojo/mobile/utility/DisplayController","dojo/mobile/utility/BrowserUtility"],function(_b,dc,bu){
+if(_a.dojoWidget instanceof dojox.mobile.Tooltip){
+if(_b("ios")||_b("webkit")){
+dc.forceWidthUpdate(_a);
+}
+}
+});
+}
+}
+catch(e){
+console.error(e);
+}
+},"hideOpener":function(){
+var _e=this;
+if(_e.dojoWidget){
+_e.dojoWidget.hide();
+}
+},"setIsModal":function(_f){
+this.isModal=_f||false;
+},"getIsModal":function(){
+return this.isModal;
+}});
+
+// End of included file: dojo/mobile/widgets/DojoMobileOpener.js
+</script>
+<script>
+// Included file: dojo/mobile/widgets/DojoMobileListCategory.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileListCategory","dojo.mobile.widgets","DojoMobileBase","li",{"standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout"],"eglBaseClass":"eglMblListCategory","constructor":function(){
+var _1=this;
+this.style="Rounded Rectangle";
+_1._safeRender();
+},"createDojoWidget":function(_2,_3){
+var _4=this;
+if(this.style=="Edge to Edge"){
+this.dojoWidget=new dojox.mobile.EdgeToEdgeCategory(_3,_2);
+}else{
+this.dojoWidget=new dojox.mobile.RoundRectCategory(_3,_2);
+}
+this.dojoWidget.domNode.style.listStyleType="none";
+_4.synchronor.trigger(_4,"SYN_READY");
+},"setTitle":function(_5){
+this._safeSet("label",_5);
+if(this.dojoWidget){
+this.dojoWidget.domNode.innerHTML=_5;
+}
+},"getTitle":function(){
+return this.label;
+},"setLogicalParent":function(_6){
+var _7=this;
+this.logicalParent=_6;
+if(_6.style){
+this.style=_6.style;
+}
+}});
+
+// End of included file: dojo/mobile/widgets/DojoMobileListCategory.js
+</script>
+
+<!-- Included file: libraries/includePhoneGap.html -->
+<script type="text/javascript" src="phonegap.js"></script>
+
+<!-- End of included file: libraries/includePhoneGap.html -->
+
+<script>
+// Included file: eu/imtech/firstproject/libraries/PhoneGap.js
+egl.defineRUIWidget("eu.imtech.firstproject.libraries","PhoneGap",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/eu/imtech/firstproject/libraries/PhoneGap.egl","eze$$runtimePropertiesFile":"eu/imtech/firstproject/libraries/PhoneGap","constructor":function(){
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+},"toString":function(){
+return "[PhoneGap]";
+}});
+
+// End of included file: eu/imtech/firstproject/libraries/PhoneGap.js
+</script>
+<script>
 // Included file: dojo/mobile/utility/BrowserLib.js
 egl.defineRUILibrary("dojo.mobile.utility","BrowserLib",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.widgets_1.1.0/EGLSource/dojo/mobile/utility/BrowserLib.egl","eze$$runtimePropertiesFile":"dojo/mobile/utility/BrowserLib","constructor":function(){
 if(egl.dojo.mobile.utility.BrowserLib["$inst"]){
@@ -13148,8 +13179,25 @@ return "[DojoMobileLib]";
 // End of included file: dojo/mobile/widgets/DojoMobileLib.js
 </script>
 <script>
+// Included file: eu/imtech/firstproject/libraries/FastClick.js
+egl.defineRUILibrary("eu.imtech.firstproject.libraries","FastClick",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/eu/imtech/firstproject/libraries/FastClick.egl","eze$$runtimePropertiesFile":"eu/imtech/firstproject/libraries/FastClick","constructor":function(){
+if(egl.eu.imtech.firstproject.libraries.FastClick["$inst"]){
+return egl.eu.imtech.firstproject.libraries.FastClick["$inst"];
+}
+egl.eu.imtech.firstproject.libraries.FastClick["$inst"]=this;
+this.fastClick_js=new egl.libraries.fastclick_js();
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+},"init":function(){
+this.fastClick_js.init();
+},"toString":function(){
+return "[FastClick]";
+}});
+
+// End of included file: eu/imtech/firstproject/libraries/FastClick.js
+</script>
+<script>
 // Included file: dojo/mobile/samples/utility/BaseSample.js
-egl.defineRUIWidget("dojo.mobile.samples.utility","BaseSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/utility/BaseSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/utility/BaseSample","constructor":function(){
+egl.defineRUIWidget("dojo.mobile.samples.utility","BaseSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/utility/BaseSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/utility/BaseSample","constructor":function(){
 this._title=null;
 this._index=0;
 this._icon="";
@@ -13165,7 +13213,9 @@ return "[BaseSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/Gallery.js
-egl.defineRUIHandler("dojo.mobile.samples","Gallery",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/Gallery.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/Gallery","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples","Gallery",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/Gallery.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/Gallery","constructor":function(){
+this.phoneGap=new egl.eu.imtech.firstproject.libraries.PhoneGap();
+egl.addEmbeddedWidget(this,"phoneGap");
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this._viewAdvanceStyleSample=new egl.dojo.mobile.samples.perwidget.ViewAdvanceStyleSample();
@@ -13224,9 +13274,10 @@ egl.addEmbeddedWidget(this,"listChild");
 this.listChildren=null;
 this.jsrt$SysVar=new egl.egl.core.SysVar();
 new egl.dojo.mobile.widgets.DojoMobileLib();
+new egl.eu.imtech.firstproject.libraries.FastClick();
 this.initialUI=[this.View];
 this.View.setSelected(true);
-this.View.setHeaderTitle("EGL Mobile Gallery");
+this.View.setHeaderTitle("Imtech's EGL Mobile Gallery");
 this.View.setChildren([this.themeList,this.List,this._themeOpener]);
 this._views=[egl.checkNull(this._viewBasicSample).View,egl.checkNull(this._viewAdvanceStyleSample).View,egl.checkNull(this._viewMutipleSelectedSample).View,egl.checkNull(this._tabContainerSample).View,egl.checkNull(this._tabSample).View,egl.checkNull(this._listSample).View,egl.checkNull(this._listItemSample).View,egl.checkNull(this._listCategorySample).View,egl.checkNull(this._sliderSample).View,egl.checkNull(this._buttonSample).View,egl.checkNull(this._checkBoxSample).View,egl.checkNull(this._datePickerSample).View,egl.checkNull(this._openerSample).View,egl.checkNull(this._iconContainerSample).View,egl.checkNull(this._switchSample).View,egl.checkNull(this._textAreaSample).View,egl.checkNull(this._eventSample).View];
 this._samples=[(function(){
@@ -13360,6 +13411,7 @@ this.themeListItem.setClass("themeListItem");
 this.listChildren=[];
 this.start();
 },"start":function(){
+egl.eu.imtech.firstproject.libraries.FastClick["$inst"].init();
 var i=0;
 i=1;
 for(;(i<=this._samples.getSize());i=(i+1)){
@@ -13434,154 +13486,6 @@ return "[Gallery]";
 }});
 
 // End of included file: dojo/mobile/samples/Gallery.js
-</script>
-<script>
-// Included file: com/ibm/egl/rui/widgets/HTML.js
-egl.defineRUIWidget("com.ibm.egl.rui.widgets","HTML",{"eze$$fileName":"/com.ibm.egl.rui_4.2.2/EGLSource/com/ibm/egl/rui/widgets/HTML.egl","eze$$runtimePropertiesFile":"com/ibm/egl/rui/widgets/HTML","constructor":function(){
-this.text="";
-this.src="";
-this.contextURL="";
-this.widgetOrientationThis="";
-this.jsrt$SysVar=new egl.egl.core.SysVar();
-new egl.egl.core.StrLib();
-this.widgetOrientationThis="";
-this.start();
-},"start":function(){
-var _1="";
-_1=this.document.getLocation();
-var _2=0;
-_2=egl.egl.core.$StrLib.indexOf(_1,("//"));
-_2=egl.egl.core.$StrLib.indexOf(_1,("/"),(_2+2));
-var _3=0;
-_3=egl.egl.core.$StrLib.indexOf(_1,("/"),(_2+1));
-if((_3!=0)){
-_2=_3;
-}
-this.contextURL=_1.substring(1-1,_2);
-},"setText":function(_4){
-this.text=_4;
-this.setInnerHTML(_4);
-},"getText":function(){
-var _5="";
-_5=this.text;
-return _5;
-},"setSrc":function(_6){
-var _7=new egl.egl.jsrt.RESTServiceRefWrapper("IRest","","JSESSIONID");
-if((egl.nullableCompare(egl.egl.core.$StrLib.lowerCase((_6.substring(1-1,4))),"http",0)!=0)){
-var _8=(this.contextURL+_6);
-var _9=function(_a){
-egl.egl.core.$ServiceLib.throwExceptionIfNecessary(_a,"STRING",false);
-return _a;
-};
-_7.invokeService(this,new egl.egl.jsrt.Delegate(this,egl.com.ibm.egl.rui.widgets.HTML.prototype.setText),null,-1,"invokeGet",[_8],["S;"],"reqURL _return",[_9],true,egl.egl.core.$ServiceLib.checkURLEncode(_8),egl.formatNONE,egl.formatNONE,"GET",{});
-}else{
-var _b=_6;
-var _c=function(_d){
-egl.egl.core.$ServiceLib.throwExceptionIfNecessary(_d,"STRING",false);
-return _d;
-};
-_7.invokeService(this,new egl.egl.jsrt.Delegate(this,egl.com.ibm.egl.rui.widgets.HTML.prototype.setText),null,-1,"invokeGet",[_b],["S;"],"reqURL _return",[_c],true,egl.egl.core.$ServiceLib.checkURLEncode(_b),egl.formatNONE,egl.formatNONE,"GET",{});
-}
-this.src=_6;
-},"getSrc":function(){
-var _e="";
-_e=this.src;
-return _e;
-},"getWidgetOrientation":function(){
-var _f="";
-_f=this.widgetOrientationThis;
-return _f;
-},"setWidgetOrientation":function(_10){
-this.widgetOrientationThis=_10;
-if((_10=="RTL")){
-this.setStyle("text-align: right;");
-if((this.getTextLayout()!="Visual")){
-this.setAttribute("dir",{eze$$value:"ltr",eze$$signature:"S;"});
-}
-}else{
-this.setStyle("text-align: left;");
-}
-},"toString":function(){
-return "[HTML]";
-}},"div");
-
-// End of included file: com/ibm/egl/rui/widgets/HTML.js
-</script>
-<script>
-// Included file: dojo/mobile/samples/perwidget/ListCategorySample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ListCategorySample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ListCategorySample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ListCategorySample","constructor":function(){
-this.View=new egl.dojo.mobile.widgets.DojoMobileView();
-egl.addEmbeddedWidget(this,"View");
-this.List1=new egl.dojo.mobile.widgets.DojoMobileList();
-egl.addEmbeddedWidget(this,"List1");
-this.List2=new egl.dojo.mobile.widgets.DojoMobileList();
-egl.addEmbeddedWidget(this,"List2");
-this.jsrt$SysVar=new egl.egl.core.SysVar();
-new egl.dojo.mobile.widgets.DojoMobileLib();
-this.initialUI=[this.View];
-this.View.setHeaderTitle("List Category Sample");
-this.View.setChildren([(function(){
-var _1=new egl.com.ibm.egl.rui.widgets.HTML();
-egl.checkNull(_1).setMargin(20);
-egl.checkNull(_1).setText("This sample shows how to create a DojoMobileListCategory within a DojoMobileList. The style of the category is controlled by the style of the list.");
-egl.checkNull(_1).setMarginBottom(20);
-return _1;
-}).call(this),(function(){
-var _2=new egl.com.ibm.egl.rui.widgets.HTML();
-egl.checkNull(_2).setMargin(20);
-egl.checkNull(_2).setText("Rounded Rectangle List");
-return _2;
-}).call(this),this.List1,(function(){
-var _3=new egl.com.ibm.egl.rui.widgets.HTML();
-egl.checkNull(_3).setMargin(20);
-egl.checkNull(_3).setText("Edge to Edge List");
-return _3;
-}).call(this),this.List2]);
-this.List1.setStyle("Rounded Rectangle");
-this.List1.setChildren([(function(){
-var _4=new egl.dojo.mobile.widgets.DojoMobileListCategory();
-_4.setTitle("Rounded Rectangle Category 1");
-return _4;
-}).call(this),(function(){
-var _5=new egl.dojo.mobile.widgets.DojoMobileListItem();
-_5.setText("List Item 1");
-_5.setImagePath("dojo/mobile/images/i-icon-1.png");
-return _5;
-}).call(this),(function(){
-var _6=new egl.dojo.mobile.widgets.DojoMobileListCategory();
-_6.setTitle("Rounded Rectangle Category 2");
-return _6;
-}).call(this),(function(){
-var _7=new egl.dojo.mobile.widgets.DojoMobileListItem();
-_7.setText("List Item 2");
-_7.setImagePath("dojo/mobile/images/i-icon-1.png");
-return _7;
-}).call(this)]);
-this.List2.setStyle("Edge to Edge");
-this.List2.setChildren([(function(){
-var _8=new egl.dojo.mobile.widgets.DojoMobileListCategory();
-_8.setTitle("Edge to Edge Category 1");
-return _8;
-}).call(this),(function(){
-var _9=new egl.dojo.mobile.widgets.DojoMobileListItem();
-_9.setText("List Item 1");
-_9.setImagePath("dojo/mobile/images/i-icon-1.png");
-return _9;
-}).call(this),(function(){
-var _a=new egl.dojo.mobile.widgets.DojoMobileListCategory();
-_a.setTitle("Edge to Edge Category 2");
-return _a;
-}).call(this),(function(){
-var _b=new egl.dojo.mobile.widgets.DojoMobileListItem();
-_b.setText("List Item 2");
-_b.setImagePath("dojo/mobile/images/i-icon-1.png");
-return _b;
-}).call(this)]);
-},"toString":function(){
-return "[ListCategorySample]";
-}});
-
-// End of included file: dojo/mobile/samples/perwidget/ListCategorySample.js
 </script>
 <script>
 // Included file: dojo/mobile/widgets/DojoMobileSwitch.js
@@ -13663,6 +13567,88 @@ this.className=_10;
 // End of included file: dojo/mobile/widgets/DojoMobileSwitch.js
 </script>
 <script>
+// Included file: com/ibm/egl/rui/widgets/Div.js
+egl.defineRUIWidget("com.ibm.egl.rui.widgets","Div",{"eze$$fileName":"/com.ibm.egl.rui_4.2.2/EGLSource/com/ibm/egl/rui/widgets/Div.egl","eze$$runtimePropertiesFile":"com/ibm/egl/rui/widgets/Div","constructor":function(){
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+},"toString":function(){
+return "[Div]";
+}},"div");
+
+// End of included file: com/ibm/egl/rui/widgets/Div.js
+</script>
+<script>
+// Included file: com/ibm/egl/rui/widgets/HTML.js
+egl.defineRUIWidget("com.ibm.egl.rui.widgets","HTML",{"eze$$fileName":"/com.ibm.egl.rui_4.2.2/EGLSource/com/ibm/egl/rui/widgets/HTML.egl","eze$$runtimePropertiesFile":"com/ibm/egl/rui/widgets/HTML","constructor":function(){
+this.text="";
+this.src="";
+this.contextURL="";
+this.widgetOrientationThis="";
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+new egl.egl.core.StrLib();
+this.widgetOrientationThis="";
+this.start();
+},"start":function(){
+var _1="";
+_1=this.document.getLocation();
+var _2=0;
+_2=egl.egl.core.$StrLib.indexOf(_1,("//"));
+_2=egl.egl.core.$StrLib.indexOf(_1,("/"),(_2+2));
+var _3=0;
+_3=egl.egl.core.$StrLib.indexOf(_1,("/"),(_2+1));
+if((_3!=0)){
+_2=_3;
+}
+this.contextURL=_1.substring(1-1,_2);
+},"setText":function(_4){
+this.text=_4;
+this.setInnerHTML(_4);
+},"getText":function(){
+var _5="";
+_5=this.text;
+return _5;
+},"setSrc":function(_6){
+var _7=new egl.egl.jsrt.RESTServiceRefWrapper("IRest","","JSESSIONID");
+if((egl.nullableCompare(egl.egl.core.$StrLib.lowerCase((_6.substring(1-1,4))),"http",0)!=0)){
+var _8=(this.contextURL+_6);
+var _9=function(_a){
+egl.egl.core.$ServiceLib.throwExceptionIfNecessary(_a,"STRING",false);
+return _a;
+};
+_7.invokeService(this,new egl.egl.jsrt.Delegate(this,egl.com.ibm.egl.rui.widgets.HTML.prototype.setText),null,-1,"invokeGet",[_8],["S;"],"reqURL _return",[_9],true,egl.egl.core.$ServiceLib.checkURLEncode(_8),egl.formatNONE,egl.formatNONE,"GET",{});
+}else{
+var _b=_6;
+var _c=function(_d){
+egl.egl.core.$ServiceLib.throwExceptionIfNecessary(_d,"STRING",false);
+return _d;
+};
+_7.invokeService(this,new egl.egl.jsrt.Delegate(this,egl.com.ibm.egl.rui.widgets.HTML.prototype.setText),null,-1,"invokeGet",[_b],["S;"],"reqURL _return",[_c],true,egl.egl.core.$ServiceLib.checkURLEncode(_b),egl.formatNONE,egl.formatNONE,"GET",{});
+}
+this.src=_6;
+},"getSrc":function(){
+var _e="";
+_e=this.src;
+return _e;
+},"getWidgetOrientation":function(){
+var _f="";
+_f=this.widgetOrientationThis;
+return _f;
+},"setWidgetOrientation":function(_10){
+this.widgetOrientationThis=_10;
+if((_10=="RTL")){
+this.setStyle("text-align: right;");
+if((this.getTextLayout()!="Visual")){
+this.setAttribute("dir",{eze$$value:"ltr",eze$$signature:"S;"});
+}
+}else{
+this.setStyle("text-align: left;");
+}
+},"toString":function(){
+return "[HTML]";
+}},"div");
+
+// End of included file: com/ibm/egl/rui/widgets/HTML.js
+</script>
+<script>
 // Included file: com/ibm/egl/rui/widgets/Span.js
 egl.defineRUIWidget("com.ibm.egl.rui.widgets","Span",{"eze$$fileName":"/com.ibm.egl.rui_4.2.2/EGLSource/com/ibm/egl/rui/widgets/Span.egl","eze$$runtimePropertiesFile":"com/ibm/egl/rui/widgets/Span","constructor":function(){
 this.text="";
@@ -13735,18 +13721,8 @@ return "[TextField]";
 // End of included file: com/ibm/egl/rui/widgets/TextField.js
 </script>
 <script>
-// Included file: com/ibm/egl/rui/widgets/Div.js
-egl.defineRUIWidget("com.ibm.egl.rui.widgets","Div",{"eze$$fileName":"/com.ibm.egl.rui_4.2.2/EGLSource/com/ibm/egl/rui/widgets/Div.egl","eze$$runtimePropertiesFile":"com/ibm/egl/rui/widgets/Div","constructor":function(){
-this.jsrt$SysVar=new egl.egl.core.SysVar();
-},"toString":function(){
-return "[Div]";
-}},"div");
-
-// End of included file: com/ibm/egl/rui/widgets/Div.js
-</script>
-<script>
 // Included file: dojo/mobile/samples/perwidget/ListItemSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ListItemSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ListItemSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ListItemSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ListItemSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ListItemSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ListItemSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.mainView=new egl.dojo.mobile.widgets.DojoMobileView();
@@ -13905,6 +13881,82 @@ return "[ListItemSample]";
 }});
 
 // End of included file: dojo/mobile/samples/perwidget/ListItemSample.js
+</script>
+<script>
+// Included file: dojo/mobile/samples/perwidget/ListCategorySample.js
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ListCategorySample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ListCategorySample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ListCategorySample","constructor":function(){
+this.View=new egl.dojo.mobile.widgets.DojoMobileView();
+egl.addEmbeddedWidget(this,"View");
+this.List1=new egl.dojo.mobile.widgets.DojoMobileList();
+egl.addEmbeddedWidget(this,"List1");
+this.List2=new egl.dojo.mobile.widgets.DojoMobileList();
+egl.addEmbeddedWidget(this,"List2");
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+new egl.dojo.mobile.widgets.DojoMobileLib();
+this.initialUI=[this.View];
+this.View.setHeaderTitle("List Category Sample");
+this.View.setChildren([(function(){
+var _1=new egl.com.ibm.egl.rui.widgets.HTML();
+egl.checkNull(_1).setMargin(20);
+egl.checkNull(_1).setText("This sample shows how to create a DojoMobileListCategory within a DojoMobileList. The style of the category is controlled by the style of the list.");
+egl.checkNull(_1).setMarginBottom(20);
+return _1;
+}).call(this),(function(){
+var _2=new egl.com.ibm.egl.rui.widgets.HTML();
+egl.checkNull(_2).setMargin(20);
+egl.checkNull(_2).setText("Rounded Rectangle List");
+return _2;
+}).call(this),this.List1,(function(){
+var _3=new egl.com.ibm.egl.rui.widgets.HTML();
+egl.checkNull(_3).setMargin(20);
+egl.checkNull(_3).setText("Edge to Edge List");
+return _3;
+}).call(this),this.List2]);
+this.List1.setStyle("Rounded Rectangle");
+this.List1.setChildren([(function(){
+var _4=new egl.dojo.mobile.widgets.DojoMobileListCategory();
+_4.setTitle("Rounded Rectangle Category 1");
+return _4;
+}).call(this),(function(){
+var _5=new egl.dojo.mobile.widgets.DojoMobileListItem();
+_5.setText("List Item 1");
+_5.setImagePath("dojo/mobile/images/i-icon-1.png");
+return _5;
+}).call(this),(function(){
+var _6=new egl.dojo.mobile.widgets.DojoMobileListCategory();
+_6.setTitle("Rounded Rectangle Category 2");
+return _6;
+}).call(this),(function(){
+var _7=new egl.dojo.mobile.widgets.DojoMobileListItem();
+_7.setText("List Item 2");
+_7.setImagePath("dojo/mobile/images/i-icon-1.png");
+return _7;
+}).call(this)]);
+this.List2.setStyle("Edge to Edge");
+this.List2.setChildren([(function(){
+var _8=new egl.dojo.mobile.widgets.DojoMobileListCategory();
+_8.setTitle("Edge to Edge Category 1");
+return _8;
+}).call(this),(function(){
+var _9=new egl.dojo.mobile.widgets.DojoMobileListItem();
+_9.setText("List Item 1");
+_9.setImagePath("dojo/mobile/images/i-icon-1.png");
+return _9;
+}).call(this),(function(){
+var _a=new egl.dojo.mobile.widgets.DojoMobileListCategory();
+_a.setTitle("Edge to Edge Category 2");
+return _a;
+}).call(this),(function(){
+var _b=new egl.dojo.mobile.widgets.DojoMobileListItem();
+_b.setText("List Item 2");
+_b.setImagePath("dojo/mobile/images/i-icon-1.png");
+return _b;
+}).call(this)]);
+},"toString":function(){
+return "[ListCategorySample]";
+}});
+
+// End of included file: dojo/mobile/samples/perwidget/ListCategorySample.js
 </script>
 <script>
 // Included file: com/ibm/egl/rui/widgets/TextLabel.js
@@ -14898,7 +14950,7 @@ return "[UtilLib]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/ViewBasicSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ViewBasicSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ViewBasicSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ViewBasicSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ViewBasicSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ViewBasicSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ViewBasicSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.intro=new egl.com.ibm.egl.rui.widgets.Div();
@@ -15248,7 +15300,7 @@ return "[TextArea]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/SliderSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","SliderSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/SliderSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/SliderSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","SliderSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/SliderSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/SliderSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.SliderH=new egl.dojo.mobile.widgets.DojoMobileSlider();
@@ -15890,7 +15942,7 @@ egl.defineWidget(
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/TabContainerSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","TabContainerSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/TabContainerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/TabContainerSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","TabContainerSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/TabContainerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/TabContainerSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.TextLabel=new egl.com.ibm.egl.rui.widgets.TextLabel();
@@ -16054,7 +16106,7 @@ return "[TabContainerSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/DatePickerSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","DatePickerSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/DatePickerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/DatePickerSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","DatePickerSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/DatePickerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/DatePickerSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.GridLayout=new egl.com.ibm.egl.rui.widgets.GridLayout();
@@ -16094,8 +16146,8 @@ egl.addEmbeddedWidget(this,"Button3");
 this.Box1=new egl.com.ibm.egl.rui.widgets.Box();
 egl.addEmbeddedWidget(this,"Box1");
 this.jsrt$SysVar=new egl.egl.core.SysVar();
-new egl.com.ibm.egl.rui.widgets.BoxLib();
 new egl.dojo.mobile.widgets.DojoMobileLib();
+new egl.com.ibm.egl.rui.widgets.BoxLib();
 this.initialUI=[this.View];
 this.View.setHeaderTitle("DatePicker Sample");
 this.View.setChildren([this.Box,this.List]);
@@ -16322,7 +16374,7 @@ return this.placeHolder;
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/TextAreaSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","TextAreaSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/TextAreaSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/TextAreaSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","TextAreaSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/TextAreaSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/TextAreaSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.TextArea=new egl.dojo.mobile.widgets.DojoMobileTextArea();
@@ -16430,7 +16482,7 @@ return this.text;
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/CheckBoxSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","CheckBoxSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/CheckBoxSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/CheckBoxSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","CheckBoxSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/CheckBoxSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/CheckBoxSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.GridLayout=new egl.com.ibm.egl.rui.widgets.GridLayout();
@@ -16512,6 +16564,66 @@ return "[CheckBoxSample]";
 // End of included file: dojo/mobile/samples/perwidget/CheckBoxSample.js
 </script>
 <script>
+// Included file: dojo/mobile/widgets/DojoMobileIconContainer.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileIconContainer","dojo.mobile.widgets","DojoMobileContainer","div",{"standardEvents":[],"touchEvents":[],"eglBaseClass":"eglMblIconContainer","constructor":function(){
+var _1=this;
+this.children=[];
+this.acceptChildrenTypes={"dojo.mobile.widgets.DojoMobileIconItem":true};
+require(["dojox/mobile/IconContainer"],function(_2){
+_1._safeRender();
+});
+},"createDojoWidget":function(_3,_4){
+var _5=this;
+_5.dojoWidget=new dojox.mobile.IconContainer(_4,_3);
+_5.containerWidget=_5.dojoWidget;
+require(["dojo/mobile/utility/Synchronor"],function(_6){
+_6.trigger(_5,"SYN_READY");
+_6.wait(_5.children,"SYN_READY",function(){
+_5.dojoWidget&&_5.dojoWidget.startup();
+if(_5.children){
+_5.setChildren(_5.children,_5.containerWidget,true);
+}
+_5._fixTerminator();
+});
+});
+},"_fixTerminator":function(){
+var _7=this,_8=null,_9=null;
+if(!_7.dojoWidget){
+return;
+}
+for(var i=0;i<_7.dojoWidget.domNode.childNodes.length;++i){
+if(_7.dojoWidget.domNode.childNodes[i].className.indexOf("mblIconItemTerminator")!=-1){
+_8=_7.dojoWidget.domNode.childNodes[i];
+}else{
+if(_8&&_7.dojoWidget.domNode.childNodes[i].className.indexOf("mblIconItem")!=-1){
+_9=i+1;
+}
+}
+}
+if(_8&&_9){
+_7.dojoWidget.domNode.removeChild(_8);
+--_9;
+if(_9!=_7.dojoWidget.domNode.childNodes.length){
+document.insertBefore(_8,_7.dojoWidget.domNode.childNodes[_9]);
+}else{
+if(_9==_7.dojoWidget.domNode.childNodes.length){
+_7.dojoWidget.domNode.appendChild(_8);
+}
+}
+}
+},"setChildren":function(_b,_c,_d){
+egl.dojo.mobile.widgets.DojoMobileContainer.prototype.setChildren.call(this,_b,_c);
+if(_d){
+this._fixTerminator();
+}
+},"removeChildren":function(_e){
+var _f=this._getContainerWidget(_e);
+this._removeChildren(1,_f);
+}});
+
+// End of included file: dojo/mobile/widgets/DojoMobileIconContainer.js
+</script>
+<script>
 // Included file: dojo/mobile/widgets/DojoMobileIconItem.js
 egl.defineWidget("dojo.mobile.widgets","DojoMobileIconItem","dojo.mobile.widgets","DojoMobileBase","li",{"eglBaseClass":"eglMblIconItem","constructor":function(){
 var _1=this;
@@ -16580,68 +16692,8 @@ return this._args.label;
 // End of included file: dojo/mobile/widgets/DojoMobileIconItem.js
 </script>
 <script>
-// Included file: dojo/mobile/widgets/DojoMobileIconContainer.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileIconContainer","dojo.mobile.widgets","DojoMobileContainer","div",{"standardEvents":[],"touchEvents":[],"eglBaseClass":"eglMblIconContainer","constructor":function(){
-var _1=this;
-this.children=[];
-this.acceptChildrenTypes={"dojo.mobile.widgets.DojoMobileIconItem":true};
-require(["dojox/mobile/IconContainer"],function(_2){
-_1._safeRender();
-});
-},"createDojoWidget":function(_3,_4){
-var _5=this;
-_5.dojoWidget=new dojox.mobile.IconContainer(_4,_3);
-_5.containerWidget=_5.dojoWidget;
-require(["dojo/mobile/utility/Synchronor"],function(_6){
-_6.trigger(_5,"SYN_READY");
-_6.wait(_5.children,"SYN_READY",function(){
-_5.dojoWidget&&_5.dojoWidget.startup();
-if(_5.children){
-_5.setChildren(_5.children,_5.containerWidget,true);
-}
-_5._fixTerminator();
-});
-});
-},"_fixTerminator":function(){
-var _7=this,_8=null,_9=null;
-if(!_7.dojoWidget){
-return;
-}
-for(var i=0;i<_7.dojoWidget.domNode.childNodes.length;++i){
-if(_7.dojoWidget.domNode.childNodes[i].className.indexOf("mblIconItemTerminator")!=-1){
-_8=_7.dojoWidget.domNode.childNodes[i];
-}else{
-if(_8&&_7.dojoWidget.domNode.childNodes[i].className.indexOf("mblIconItem")!=-1){
-_9=i+1;
-}
-}
-}
-if(_8&&_9){
-_7.dojoWidget.domNode.removeChild(_8);
---_9;
-if(_9!=_7.dojoWidget.domNode.childNodes.length){
-document.insertBefore(_8,_7.dojoWidget.domNode.childNodes[_9]);
-}else{
-if(_9==_7.dojoWidget.domNode.childNodes.length){
-_7.dojoWidget.domNode.appendChild(_8);
-}
-}
-}
-},"setChildren":function(_b,_c,_d){
-egl.dojo.mobile.widgets.DojoMobileContainer.prototype.setChildren.call(this,_b,_c);
-if(_d){
-this._fixTerminator();
-}
-},"removeChildren":function(_e){
-var _f=this._getContainerWidget(_e);
-this._removeChildren(1,_f);
-}});
-
-// End of included file: dojo/mobile/widgets/DojoMobileIconContainer.js
-</script>
-<script>
 // Included file: dojo/mobile/samples/perwidget/IconContainerSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","IconContainerSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/IconContainerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/IconContainerSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","IconContainerSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/IconContainerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/IconContainerSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.View1=new egl.dojo.mobile.widgets.DojoMobileView();
@@ -16701,7 +16753,7 @@ return "[IconContainerSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/ButtonSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ButtonSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ButtonSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ButtonSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ButtonSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ButtonSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ButtonSample","constructor":function(){
 this.intro=new egl.com.ibm.egl.rui.widgets.Div();
 egl.addEmbeddedWidget(this,"intro");
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
@@ -16740,7 +16792,7 @@ return "[ButtonSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/TabSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","TabSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/TabSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/TabSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","TabSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/TabSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/TabSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.TabContainer=new egl.dojo.mobile.widgets.DojoMobileTabContainer();
@@ -16811,7 +16863,7 @@ return "[TabSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/EventsSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","EventsSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/EventsSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/EventsSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","EventsSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/EventsSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/EventsSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.List=new egl.dojo.mobile.widgets.DojoMobileList();
@@ -16857,9 +16909,9 @@ this.TextArea=new egl.com.ibm.egl.rui.widgets.HTML();
 egl.addEmbeddedWidget(this,"TextArea");
 this._eventId=0;
 this.jsrt$SysVar=new egl.egl.core.SysVar();
-new egl.dojo.mobile.widgets.DojoMobileLib();
 new egl.com.ibm.egl.rui.widgets.BoxLib();
 new egl.egl.core.StrLib();
+new egl.dojo.mobile.widgets.DojoMobileLib();
 this.initialUI=[this.View];
 this.View.setHeaderTitle("Events Sample");
 this.View.setChildren([this.List,this._widgetToDetectList,this.Box,this._widgetOpener,this._detectOpener]);
@@ -17557,7 +17609,7 @@ return "[EventsSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/ListSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ListSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ListSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ListSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ListSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ListSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ListSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.RoudedRectangleList=new egl.dojo.mobile.widgets.DojoMobileList();
@@ -17711,7 +17763,7 @@ return "[ListSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/SwitchSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","SwitchSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/SwitchSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/SwitchSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","SwitchSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/SwitchSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/SwitchSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.intro=new egl.com.ibm.egl.rui.widgets.Div();
@@ -17764,7 +17816,7 @@ return "[SwitchSample]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/utility/CheckboxGroupView.js
-egl.defineRUIHandler("dojo.mobile.samples.utility","CheckboxGroupView",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/utility/CheckboxGroupView.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/utility/CheckboxGroupView","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.utility","CheckboxGroupView",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/utility/CheckboxGroupView.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/utility/CheckboxGroupView","constructor":function(){
 this._optionsList=null;
 this.ignoreHash=egl.createDictionary(false,false);
 this.left2TBB=new egl.dojo.mobile.widgets.DojoMobileToolBarButton();
@@ -17887,7 +17939,7 @@ return "[CheckboxGroupView]";
 </script>
 <script>
 // Included file: dojo/mobile/samples/perwidget/ViewAdvanceStyleSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ViewAdvanceStyleSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ViewAdvanceStyleSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ViewAdvanceStyleSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ViewAdvanceStyleSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ViewAdvanceStyleSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ViewAdvanceStyleSample","constructor":function(){
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this.mainView=new egl.dojo.mobile.widgets.DojoMobileView();
@@ -17998,189 +18050,8 @@ return "[ViewAdvanceStyleSample]";
 // End of included file: dojo/mobile/samples/perwidget/ViewAdvanceStyleSample.js
 </script>
 <script>
-// Included file: dojo/mobile/samples/perwidget/OpenerSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","OpenerSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/OpenerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/OpenerSample","constructor":function(){
-this.View=new egl.dojo.mobile.widgets.DojoMobileView();
-egl.addEmbeddedWidget(this,"View");
-this.Box=new egl.com.ibm.egl.rui.widgets.Box();
-egl.addEmbeddedWidget(this,"Box");
-this.TextLabel=new egl.com.ibm.egl.rui.widgets.TextLabel();
-egl.addEmbeddedWidget(this,"TextLabel");
-this.Button=new egl.dojo.mobile.widgets.DojoMobileButton();
-egl.addEmbeddedWidget(this,"Button");
-this._modalOpener=new egl.dojo.mobile.widgets.DojoMobileOpener();
-egl.addEmbeddedWidget(this,"_modalOpener");
-this._nonModalOpener=new egl.dojo.mobile.widgets.DojoMobileOpener();
-egl.addEmbeddedWidget(this,"_nonModalOpener");
-this.GridLayout=new egl.com.ibm.egl.rui.widgets.GridLayout();
-egl.addEmbeddedWidget(this,"GridLayout");
-this.Box2=new egl.com.ibm.egl.rui.widgets.Box();
-egl.addEmbeddedWidget(this,"Box2");
-this.Box1=new egl.com.ibm.egl.rui.widgets.Box();
-egl.addEmbeddedWidget(this,"Box1");
-this.Button1=new egl.dojo.mobile.widgets.DojoMobileButton();
-egl.addEmbeddedWidget(this,"Button1");
-this.View1=new egl.dojo.mobile.widgets.DojoMobileView();
-egl.addEmbeddedWidget(this,"View1");
-this.View2=new egl.dojo.mobile.widgets.DojoMobileView();
-egl.addEmbeddedWidget(this,"View2");
-this.toolBtn=new egl.dojo.mobile.widgets.DojoMobileToolBarButton();
-egl.addEmbeddedWidget(this,"toolBtn");
-this.toolBtn2=new egl.dojo.mobile.widgets.DojoMobileToolBarButton();
-egl.addEmbeddedWidget(this,"toolBtn2");
-this.View21=new egl.dojo.mobile.widgets.DojoMobileView();
-egl.addEmbeddedWidget(this,"View21");
-this.View22=new egl.dojo.mobile.widgets.DojoMobileView();
-egl.addEmbeddedWidget(this,"View22");
-this.jsrt$SysVar=new egl.egl.core.SysVar();
-new egl.com.ibm.egl.rui.widgets.BoxLib();
-new egl.dojo.mobile.widgets.DojoMobileLib();
-this.initialUI=[this.View,this._nonModalOpener,this._modalOpener];
-this.View.setHeaderTitle("Opener Sample");
-this.View.setChildren([this.Box,this.GridLayout]);
-egl.checkNull(this.Box).setPadding(8);
-egl.checkNull(this.Box).setChildren([this.TextLabel]);
-egl.checkNull(this.TextLabel).setText("This sample is to show the usage of opener. The modal opener behaves as Dojo Opener Widget. You can't interact with parent widgets until the opener disappears, while the non-modal opener behaves like Dojo overlay, where you can still interact with parent view widget when it is showing.");
-this.Button.setText("Pop Modal Opener");
-this.Button.setWidth("150");
-this.Button.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_onClick));
-this._modalOpener.setChildren([this.View2]);
-this._modalOpener.setIsModal(true);
-this._modalOpener.setClass("transparentOverlay");
-this._nonModalOpener.setChildren([this.View1]);
-this._nonModalOpener.setIsModal(false);
-this._nonModalOpener.setClass("blackberryOpener");
-egl.checkNull(this.GridLayout).setCellPadding(4);
-egl.checkNull(this.GridLayout).setRows(1);
-egl.checkNull(this.GridLayout).setColumns(2);
-egl.checkNull(this.GridLayout).setWidth("100%");
-egl.checkNull(this.GridLayout).setChildren([this.Box2,this.Box1]);
-egl.checkNull(this.Box2).setLayoutData({eze$$value:(function(){
-var _1=new egl.com.ibm.egl.rui.widgets.GridLayoutData();
-_1.row=1;
-_1.column=2;
-return _1;
-}).call(this).eze$$clone(),eze$$signature:"Tcom/ibm/egl/rui/widgets/gridlayoutdata;"});
-egl.checkNull(this.Box2).setPadding(8);
-egl.checkNull(this.Box2).setChildren([this.Button1]);
-egl.checkNull(this.Box2).setAlignment(1);
-egl.checkNull(this.Box1).setLayoutData({eze$$value:(function(){
-var _2=new egl.com.ibm.egl.rui.widgets.GridLayoutData();
-_2.row=1;
-_2.column=1;
-return _2;
-}).call(this).eze$$clone(),eze$$signature:"Tcom/ibm/egl/rui/widgets/gridlayoutdata;"});
-egl.checkNull(this.Box1).setPadding(8);
-egl.checkNull(this.Box1).setChildren([this.Button]);
-egl.checkNull(this.Box1).setAlignment(1);
-this.Button1.setText("Pop Non-modal Opener");
-this.Button1.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button1_onClick));
-this.View1.setSelected(true);
-this.View1.setHeaderTitle("Non-modal Opener Pop View");
-this.View1.setChildren([(function(){
-var _3=new egl.com.ibm.egl.rui.widgets.Box();
-egl.checkNull(_3).setPadding(8);
-egl.checkNull(_3).setChildren([(function(){
-var _4=new egl.com.ibm.egl.rui.widgets.TextLabel();
-egl.checkNull(_4).setText("Hi, this is a non-modal opener. Try clicking Pop Moodal Opener button. It is supposed to respond to your interaction.");
-egl.checkNull(_4).setColor("Black");
-return _4;
-}).call(this)]);
-return _3;
-}).call(this),(function(){
-var _5=new egl.com.ibm.egl.rui.widgets.Box();
-egl.checkNull(_5).setPadding(8);
-egl.checkNull(_5).setChildren([(function(){
-var _6=new egl.dojo.mobile.widgets.DojoMobileButton();
-_6.setText("Hide");
-_6.setWidth("100");
-_6.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_hideNonmodalOnClick));
-return _6;
-}).call(this)]);
-egl.checkNull(_5).setAlignment(1);
-return _5;
-}).call(this)]);
-this.View2.setSelected(true);
-this.View2.setChildren([this.View21,this.View22]);
-this.toolBtn.setActionView(this.View22);
-this.toolBtn.setClass("float-right");
-this.toolBtn.setText("Go to view 2");
-this.toolBtn.setTransition("fade");
-this.toolBtn.setTransitionDir(1);
-this.toolBtn2.setActionView(this.View21);
-this.toolBtn2.setClass("float-right");
-this.toolBtn2.setText("Go to view 1");
-this.toolBtn2.setTransition("flip");
-this.toolBtn2.setTransitionDir(1);
-this.View21.setSelected(true);
-this.View21.setHeaderTitle("Pop View 1");
-this.View21.setClass("myView");
-this.View21.setBackView(this.View22);
-this.View21.setBackText("Go to view 2");
-this.View21.setToolBar([this.toolBtn]);
-this.View21.setChildren([(function(){
-var _7=new egl.com.ibm.egl.rui.widgets.HTML();
-egl.checkNull(_7).setText("<p style=\"padding:0 5px;\">Hi, this is a modal opener. When the height or the width of your screen is less than 500px, the modal opener will degenerates into phone style where it behaves as Dojo Overlay Widget, otherwise it will has a default style of tablet, where it behaves as Dojo Toolltip Widget. Try clicking parent button. They are not supposed to respond to your interaction unless it disapears.</p>");
-egl.checkNull(_7).setColor("Azure");
-egl.checkNull(_7).setClass("myLabel");
-return _7;
-}).call(this),(function(){
-var _8=new egl.com.ibm.egl.rui.widgets.Box();
-egl.checkNull(_8).setPadding(8);
-egl.checkNull(_8).setChildren([(function(){
-var _9=new egl.dojo.mobile.widgets.DojoMobileButton();
-_9.setText("Hide");
-_9.setWidth("100%");
-_9.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_hideModalOnClick));
-return _9;
-}).call(this)]);
-egl.checkNull(_8).setAlignment(1);
-return _8;
-}).call(this)]);
-this.View22.setSelected(false);
-this.View22.setHeaderTitle("Pop View 2");
-this.View22.setClass("myView");
-this.View22.setBackView(this.View21);
-this.View22.setBackText("Back to view 1");
-this.View22.setToolBar([this.toolBtn2]);
-this.View22.setChildren([(function(){
-var _a=new egl.com.ibm.egl.rui.widgets.HTML();
-egl.checkNull(_a).setText("<p style=\"padding:0 5px;\">Hi, this is a modal opener. I can switch back to modal opener's child view 1</p>");
-egl.checkNull(_a).setColor("Azure");
-egl.checkNull(_a).setClass("myLabel");
-return _a;
-}).call(this),(function(){
-var _b=new egl.com.ibm.egl.rui.widgets.Box();
-egl.checkNull(_b).setPadding(8);
-egl.checkNull(_b).setChildren([(function(){
-var _c=new egl.dojo.mobile.widgets.DojoMobileButton();
-_c.setText("Hide");
-_c.setWidth("100%");
-_c.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_hideModalOnClick));
-return _c;
-}).call(this)]);
-egl.checkNull(_b).setAlignment(1);
-return _b;
-}).call(this)]);
-this.start();
-},"start":function(){
-},"Button_onClick":function(_d){
-this._modalOpener.showOpener(this.Button,"after");
-},"Button1_onClick":function(_e){
-this._nonModalOpener.showOpener(this.Button1,"before");
-},"Button_hideModalOnClick":function(_f){
-this._modalOpener.hideOpener();
-},"Button_hideNonmodalOnClick":function(_10){
-this._nonModalOpener.hideOpener();
-},"toString":function(){
-return "[OpenerSample]";
-}});
-
-// End of included file: dojo/mobile/samples/perwidget/OpenerSample.js
-</script>
-<script>
 // Included file: dojo/mobile/samples/perwidget/ViewMutipleSelectedSample.js
-egl.defineRUIHandler("dojo.mobile.samples.perwidget","ViewMutipleSelectedSample",{"eze$$fileName":"/com.ibm.egl.rui.dojo.mobile.samples/EGLSource/dojo/mobile/samples/perwidget/ViewMutipleSelectedSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ViewMutipleSelectedSample","constructor":function(){
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","ViewMutipleSelectedSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ViewMutipleSelectedSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ViewMutipleSelectedSample","constructor":function(){
 this.Button1=new egl.dojo.mobile.widgets.DojoMobileButton();
 egl.addEmbeddedWidget(this,"Button1");
 this.Button2=new egl.dojo.mobile.widgets.DojoMobileButton();
@@ -18630,6 +18501,187 @@ return "[ViewMutipleSelectedSample]";
 }});
 
 // End of included file: dojo/mobile/samples/perwidget/ViewMutipleSelectedSample.js
+</script>
+<script>
+// Included file: dojo/mobile/samples/perwidget/OpenerSample.js
+egl.defineRUIHandler("dojo.mobile.samples.perwidget","OpenerSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/OpenerSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/OpenerSample","constructor":function(){
+this.View=new egl.dojo.mobile.widgets.DojoMobileView();
+egl.addEmbeddedWidget(this,"View");
+this.Box=new egl.com.ibm.egl.rui.widgets.Box();
+egl.addEmbeddedWidget(this,"Box");
+this.TextLabel=new egl.com.ibm.egl.rui.widgets.TextLabel();
+egl.addEmbeddedWidget(this,"TextLabel");
+this.Button=new egl.dojo.mobile.widgets.DojoMobileButton();
+egl.addEmbeddedWidget(this,"Button");
+this._modalOpener=new egl.dojo.mobile.widgets.DojoMobileOpener();
+egl.addEmbeddedWidget(this,"_modalOpener");
+this._nonModalOpener=new egl.dojo.mobile.widgets.DojoMobileOpener();
+egl.addEmbeddedWidget(this,"_nonModalOpener");
+this.GridLayout=new egl.com.ibm.egl.rui.widgets.GridLayout();
+egl.addEmbeddedWidget(this,"GridLayout");
+this.Box2=new egl.com.ibm.egl.rui.widgets.Box();
+egl.addEmbeddedWidget(this,"Box2");
+this.Box1=new egl.com.ibm.egl.rui.widgets.Box();
+egl.addEmbeddedWidget(this,"Box1");
+this.Button1=new egl.dojo.mobile.widgets.DojoMobileButton();
+egl.addEmbeddedWidget(this,"Button1");
+this.View1=new egl.dojo.mobile.widgets.DojoMobileView();
+egl.addEmbeddedWidget(this,"View1");
+this.View2=new egl.dojo.mobile.widgets.DojoMobileView();
+egl.addEmbeddedWidget(this,"View2");
+this.toolBtn=new egl.dojo.mobile.widgets.DojoMobileToolBarButton();
+egl.addEmbeddedWidget(this,"toolBtn");
+this.toolBtn2=new egl.dojo.mobile.widgets.DojoMobileToolBarButton();
+egl.addEmbeddedWidget(this,"toolBtn2");
+this.View21=new egl.dojo.mobile.widgets.DojoMobileView();
+egl.addEmbeddedWidget(this,"View21");
+this.View22=new egl.dojo.mobile.widgets.DojoMobileView();
+egl.addEmbeddedWidget(this,"View22");
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+new egl.com.ibm.egl.rui.widgets.BoxLib();
+new egl.dojo.mobile.widgets.DojoMobileLib();
+this.initialUI=[this.View,this._nonModalOpener,this._modalOpener];
+this.View.setHeaderTitle("Opener Sample");
+this.View.setChildren([this.Box,this.GridLayout]);
+egl.checkNull(this.Box).setPadding(8);
+egl.checkNull(this.Box).setChildren([this.TextLabel]);
+egl.checkNull(this.TextLabel).setText("This sample is to show the usage of opener. The modal opener behaves as Dojo Opener Widget. You can't interact with parent widgets until the opener disappears, while the non-modal opener behaves like Dojo overlay, where you can still interact with parent view widget when it is showing.");
+this.Button.setText("Pop Modal Opener");
+this.Button.setWidth("150");
+this.Button.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_onClick));
+this._modalOpener.setChildren([this.View2]);
+this._modalOpener.setIsModal(true);
+this._modalOpener.setClass("transparentOverlay");
+this._nonModalOpener.setChildren([this.View1]);
+this._nonModalOpener.setIsModal(false);
+this._nonModalOpener.setClass("blackberryOpener");
+egl.checkNull(this.GridLayout).setCellPadding(4);
+egl.checkNull(this.GridLayout).setRows(1);
+egl.checkNull(this.GridLayout).setColumns(2);
+egl.checkNull(this.GridLayout).setWidth("100%");
+egl.checkNull(this.GridLayout).setChildren([this.Box2,this.Box1]);
+egl.checkNull(this.Box2).setLayoutData({eze$$value:(function(){
+var _1=new egl.com.ibm.egl.rui.widgets.GridLayoutData();
+_1.row=1;
+_1.column=2;
+return _1;
+}).call(this).eze$$clone(),eze$$signature:"Tcom/ibm/egl/rui/widgets/gridlayoutdata;"});
+egl.checkNull(this.Box2).setPadding(8);
+egl.checkNull(this.Box2).setChildren([this.Button1]);
+egl.checkNull(this.Box2).setAlignment(1);
+egl.checkNull(this.Box1).setLayoutData({eze$$value:(function(){
+var _2=new egl.com.ibm.egl.rui.widgets.GridLayoutData();
+_2.row=1;
+_2.column=1;
+return _2;
+}).call(this).eze$$clone(),eze$$signature:"Tcom/ibm/egl/rui/widgets/gridlayoutdata;"});
+egl.checkNull(this.Box1).setPadding(8);
+egl.checkNull(this.Box1).setChildren([this.Button]);
+egl.checkNull(this.Box1).setAlignment(1);
+this.Button1.setText("Pop Non-modal Opener");
+this.Button1.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button1_onClick));
+this.View1.setSelected(true);
+this.View1.setHeaderTitle("Non-modal Opener Pop View");
+this.View1.setChildren([(function(){
+var _3=new egl.com.ibm.egl.rui.widgets.Box();
+egl.checkNull(_3).setPadding(8);
+egl.checkNull(_3).setChildren([(function(){
+var _4=new egl.com.ibm.egl.rui.widgets.TextLabel();
+egl.checkNull(_4).setText("Hi, this is a non-modal opener. Try clicking Pop Moodal Opener button. It is supposed to respond to your interaction.");
+egl.checkNull(_4).setColor("Black");
+return _4;
+}).call(this)]);
+return _3;
+}).call(this),(function(){
+var _5=new egl.com.ibm.egl.rui.widgets.Box();
+egl.checkNull(_5).setPadding(8);
+egl.checkNull(_5).setChildren([(function(){
+var _6=new egl.dojo.mobile.widgets.DojoMobileButton();
+_6.setText("Hide");
+_6.setWidth("100");
+_6.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_hideNonmodalOnClick));
+return _6;
+}).call(this)]);
+egl.checkNull(_5).setAlignment(1);
+return _5;
+}).call(this)]);
+this.View2.setSelected(true);
+this.View2.setChildren([this.View21,this.View22]);
+this.toolBtn.setActionView(this.View22);
+this.toolBtn.setClass("float-right");
+this.toolBtn.setText("Go to view 2");
+this.toolBtn.setTransition("fade");
+this.toolBtn.setTransitionDir(1);
+this.toolBtn2.setActionView(this.View21);
+this.toolBtn2.setClass("float-right");
+this.toolBtn2.setText("Go to view 1");
+this.toolBtn2.setTransition("flip");
+this.toolBtn2.setTransitionDir(1);
+this.View21.setSelected(true);
+this.View21.setHeaderTitle("Pop View 1");
+this.View21.setClass("myView");
+this.View21.setBackView(this.View22);
+this.View21.setBackText("Go to view 2");
+this.View21.setToolBar([this.toolBtn]);
+this.View21.setChildren([(function(){
+var _7=new egl.com.ibm.egl.rui.widgets.HTML();
+egl.checkNull(_7).setText("<p style=\"padding:0 5px;\">Hi, this is a modal opener. When the height or the width of your screen is less than 500px, the modal opener will degenerates into phone style where it behaves as Dojo Overlay Widget, otherwise it will has a default style of tablet, where it behaves as Dojo Toolltip Widget. Try clicking parent button. They are not supposed to respond to your interaction unless it disapears.</p>");
+egl.checkNull(_7).setColor("Azure");
+egl.checkNull(_7).setClass("myLabel");
+return _7;
+}).call(this),(function(){
+var _8=new egl.com.ibm.egl.rui.widgets.Box();
+egl.checkNull(_8).setPadding(8);
+egl.checkNull(_8).setChildren([(function(){
+var _9=new egl.dojo.mobile.widgets.DojoMobileButton();
+_9.setText("Hide");
+_9.setWidth("100%");
+_9.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_hideModalOnClick));
+return _9;
+}).call(this)]);
+egl.checkNull(_8).setAlignment(1);
+return _8;
+}).call(this)]);
+this.View22.setSelected(false);
+this.View22.setHeaderTitle("Pop View 2");
+this.View22.setClass("myView");
+this.View22.setBackView(this.View21);
+this.View22.setBackText("Back to view 1");
+this.View22.setToolBar([this.toolBtn2]);
+this.View22.setChildren([(function(){
+var _a=new egl.com.ibm.egl.rui.widgets.HTML();
+egl.checkNull(_a).setText("<p style=\"padding:0 5px;\">Hi, this is a modal opener. I can switch back to modal opener's child view 1</p>");
+egl.checkNull(_a).setColor("Azure");
+egl.checkNull(_a).setClass("myLabel");
+return _a;
+}).call(this),(function(){
+var _b=new egl.com.ibm.egl.rui.widgets.Box();
+egl.checkNull(_b).setPadding(8);
+egl.checkNull(_b).setChildren([(function(){
+var _c=new egl.dojo.mobile.widgets.DojoMobileButton();
+_c.setText("Hide");
+_c.setWidth("100%");
+_c.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.mobile.samples.perwidget.OpenerSample.prototype.Button_hideModalOnClick));
+return _c;
+}).call(this)]);
+egl.checkNull(_b).setAlignment(1);
+return _b;
+}).call(this)]);
+this.start();
+},"start":function(){
+},"Button_onClick":function(_d){
+this._modalOpener.showOpener(this.Button,"after");
+},"Button1_onClick":function(_e){
+this._nonModalOpener.showOpener(this.Button1,"before");
+},"Button_hideModalOnClick":function(_f){
+this._modalOpener.hideOpener();
+},"Button_hideNonmodalOnClick":function(_10){
+this._nonModalOpener.hideOpener();
+},"toString":function(){
+return "[OpenerSample]";
+}});
+
+// End of included file: dojo/mobile/samples/perwidget/OpenerSample.js
 </script>
 <link REL="STYLESHEET" TYPE="text/css" HREF="css/com.ibm.egl.rui_4.2.2.css">
 <link REL="STYLESHEET" TYPE="text/css" HREF="css/com.ibm.egl.rui.dojo.mobile.samples.css">
