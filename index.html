@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<!-- Generated at Wed Mar 26 21:42:04 CET 2014 by EGL 1.0.1.v20131117_0007 -->
+<!-- Generated at Wed Mar 26 22:07:24 CET 2014 by EGL 1.0.1.v20131117_0007 -->
 <title>EGL Mobile Gallery</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
@@ -13198,7 +13198,20 @@ return "[BaseSample]";
 
 <!-- Included file: libraries/includeCordova.html -->
 <script type="text/javascript" src="phonegap.js"></script>
-
+<script>
+    document.addEventListener('deviceready', function () {
+    if (navigator.notification) { // Override default HTML alert
+        window.alert = function (message) {
+            navigator.notification.alert(
+                message,    // message
+                null,       // callback
+                "iPhone", // title
+                'OK'        // buttonName
+            );
+        };
+    }
+}, false);
+</script>
 <!-- End of included file: libraries/includeCordova.html -->
 
 <script>
@@ -13987,6 +14000,20 @@ alert("encoding failed: "+_6);
 <!-- Included file: libraries/includeBarcodeScanner.html -->
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="childbrowser.js"></script>
+        <script>
+	        document.addEventListener('deviceready', function () {
+	        if (navigator.notification) { // Override default HTML alert
+	            window.alert = function (message) {
+	                navigator.notification.alert(
+	                    message,    // message
+	                    null,       // callback
+	                    "iPhone", // title
+	                    'OK'        // buttonName
+	                );
+	            };
+	        }
+	    }, false);
+        </script>
 
 <!-- End of included file: libraries/includeBarcodeScanner.html -->
 

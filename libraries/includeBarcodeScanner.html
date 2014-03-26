@@ -1,2 +1,16 @@
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="childbrowser.js"></script>
+        <script>
+	        document.addEventListener('deviceready', function () {
+	        if (navigator.notification) { // Override default HTML alert
+	            window.alert = function (message) {
+	                navigator.notification.alert(
+	                    message,    // message
+	                    null,       // callback
+	                    "iPhone", // title
+	                    'OK'        // buttonName
+	                );
+	            };
+	        }
+	    }, false);
+        </script>
