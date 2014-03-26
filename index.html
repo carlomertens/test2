@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<!-- Generated at Wed Mar 26 21:07:35 CET 2014 by EGL 1.0.1.v20131117_0007 -->
+<!-- Generated at Wed Mar 26 21:42:04 CET 2014 by EGL 1.0.1.v20131117_0007 -->
 <title>EGL Mobile Gallery</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
@@ -10976,6 +10976,123 @@ return _4;
 // End of included file: egl/javascript/JavaScriptObjectException.js
 </script>
 <script>
+// Included file: dojo/mobile/utility/BrowserLibNative.js
+egl.defineClass("dojo.mobile.utility","BrowserLibNative",{"getDJConf":function(_1){
+if(!_1){
+return null;
+}
+var _2=_1.split("."),i=0,_4=((typeof dojo!="undefined")&&dojo.config)||((typeof dojoConfig!="undefined")&&dojoConfig),_5=null;
+if(!_4){
+return null;
+}
+for(_5=_4;i<_2.length;++i){
+if(_2[i] in _5){
+_5=_5[_2[i]];
+}else{
+return null;
+}
+}
+if(_5!=_4&&_5){
+return _5+"";
+}
+return null;
+},"redirect":function(_6){
+if(self){
+self.location=_6;
+}else{
+if(window&&window.navigate){
+window.navigate(_6);
+}else{
+if(window&&window.location){
+if(window.location.href){
+window.location.href=_6;
+}else{
+window.location=_6;
+}
+}else{
+}
+}
+}
+},"getParams":function(){
+return this._getLocationProp("search");
+},"getParam":function(_7){
+var _8=this._getParamHash();
+return _8[_7]?_8[_7]:null;
+},"setGetParams":function(_9,_a){
+var _b=this._getParamHash(),_c="?",_d=true;
+_9&&(_b[_9]=(_a===null?"":_a));
+for(var _9 in _b){
+if(_d){
+_c+=(_9+"="+_b[_9]);
+_d=false;
+}else{
+_c+=("&"+_9+"="+_b[_9]);
+}
+}
+return _c.length>1?_c:null;
+},"_getParamHash":function(){
+var i=0,_f=this.getParams(),_10={};
+if(_f){
+_f=_f.substr(1);
+_f=_f.split("&");
+for(i=0;i<_f.length;++i){
+if(_f[i].indexOf("=")>0){
+_f[i]=_f[i].split("=");
+if(_f[i][0]){
+_10[_f[i][0]]=_f[i][1];
+}
+}
+}
+}
+return _10;
+},"getHost":function(){
+return this._getLocationProp("host");
+},"getOrigin":function(){
+var _11=this._getLocationProp("origin"),_12=this.getHost();
+if(_11==null&&_12){
+_11=this._getLocationProp("protocol");
+if(_11){
+if(_11.indexOf("https")>=0){
+_11=("https://"+_12);
+}else{
+if(_11.indexOf("http")>=0){
+_11=("http://"+_12);
+}else{
+_11+=(orgin+"//"+_12);
+}
+}
+}
+}
+return _11;
+},"getPath":function(){
+return this._getLocationProp("pathname");
+},"getURL":function(){
+return this._getLocationProp("href");
+},"_getLocationProp":function(_13){
+if(window.location){
+return window.location[_13]?window.location[_13]:null;
+}
+return null;
+}});
+
+// End of included file: dojo/mobile/utility/BrowserLibNative.js
+</script>
+<script>
+// Included file: libraries/fastclick_js.js
+egl.defineClass("libraries","fastclick_js",{"constructor":function(){
+},"init":function(){
+FastClick.attach(document.body);
+}});
+
+// End of included file: libraries/fastclick_js.js
+</script>
+
+<!-- Included file: libraries/includeFastClick.html -->
+<script type="text/javascript" src="libraries/fastclick.js"></script>
+
+<!-- End of included file: libraries/includeFastClick.html -->
+
+<script>
 // Included file: dojo/widgets/DojoBase.js
 setTimeout(function(){
 var _1=document.getElementById("egl_loader");
@@ -11751,30 +11868,6 @@ _53.set(_52,"tabindex",0);
 <!-- End of included file: dojo/mobile/widgets/DojoMobileBase.html -->
 
 <script>
-// Included file: dojo/mobile/widgets/DojoMobileButton.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileButton","dojo.mobile.widgets","DojoMobileBase","button",{"eglBaseClass":"eglMblBtn","standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout","change"],"constructor":function(){
-var _1=this;
-require(["dojox/mobile/Button"],function(){
-_1._safeRender();
-});
-},"createDojoWidget":function(_2,_3){
-var _4=this;
-_2.innerHTML=_4.text||"";
-_4.domNode=_2;
-_4.dojoWidget=new dojox.mobile.Button(_3,_2);
-this.dojoWidget.domNode.innerHTML=this.text||"";
-_4.synchronor.trigger(_4,"SYN_READY");
-_4.dojoWidget.startup();
-},"setText":function(_5){
-this.text=_5;
-if(this.domNode){
-this.domNode.innerHTML=this.text;
-}
-}});
-
-// End of included file: dojo/mobile/widgets/DojoMobileButton.js
-</script>
-<script>
 // Included file: dojo/mobile/widgets/DojoMobileContainer.js
 egl.defineWidget("dojo.mobile.widgets","DojoMobileContainer","dojo.mobile.widgets","DojoMobileBase","div",{"_appendChild":function(_1,_2){
 var _3=this._getContainerWidget(_2);
@@ -12389,108 +12482,6 @@ _46._appliedSafeStartup=true;
 // End of included file: dojo/mobile/widgets/DojoMobileView.js
 </script>
 <script>
-// Included file: dojo/mobile/utility/BrowserLibNative.js
-egl.defineClass("dojo.mobile.utility","BrowserLibNative",{"getDJConf":function(_1){
-if(!_1){
-return null;
-}
-var _2=_1.split("."),i=0,_4=((typeof dojo!="undefined")&&dojo.config)||((typeof dojoConfig!="undefined")&&dojoConfig),_5=null;
-if(!_4){
-return null;
-}
-for(_5=_4;i<_2.length;++i){
-if(_2[i] in _5){
-_5=_5[_2[i]];
-}else{
-return null;
-}
-}
-if(_5!=_4&&_5){
-return _5+"";
-}
-return null;
-},"redirect":function(_6){
-if(self){
-self.location=_6;
-}else{
-if(window&&window.navigate){
-window.navigate(_6);
-}else{
-if(window&&window.location){
-if(window.location.href){
-window.location.href=_6;
-}else{
-window.location=_6;
-}
-}else{
-}
-}
-}
-},"getParams":function(){
-return this._getLocationProp("search");
-},"getParam":function(_7){
-var _8=this._getParamHash();
-return _8[_7]?_8[_7]:null;
-},"setGetParams":function(_9,_a){
-var _b=this._getParamHash(),_c="?",_d=true;
-_9&&(_b[_9]=(_a===null?"":_a));
-for(var _9 in _b){
-if(_d){
-_c+=(_9+"="+_b[_9]);
-_d=false;
-}else{
-_c+=("&"+_9+"="+_b[_9]);
-}
-}
-return _c.length>1?_c:null;
-},"_getParamHash":function(){
-var i=0,_f=this.getParams(),_10={};
-if(_f){
-_f=_f.substr(1);
-_f=_f.split("&");
-for(i=0;i<_f.length;++i){
-if(_f[i].indexOf("=")>0){
-_f[i]=_f[i].split("=");
-if(_f[i][0]){
-_10[_f[i][0]]=_f[i][1];
-}
-}
-}
-}
-return _10;
-},"getHost":function(){
-return this._getLocationProp("host");
-},"getOrigin":function(){
-var _11=this._getLocationProp("origin"),_12=this.getHost();
-if(_11==null&&_12){
-_11=this._getLocationProp("protocol");
-if(_11){
-if(_11.indexOf("https")>=0){
-_11=("https://"+_12);
-}else{
-if(_11.indexOf("http")>=0){
-_11=("http://"+_12);
-}else{
-_11+=(orgin+"//"+_12);
-}
-}
-}
-}
-return _11;
-},"getPath":function(){
-return this._getLocationProp("pathname");
-},"getURL":function(){
-return this._getLocationProp("href");
-},"_getLocationProp":function(_13){
-if(window.location){
-return window.location[_13]?window.location[_13]:null;
-}
-return null;
-}});
-
-// End of included file: dojo/mobile/utility/BrowserLibNative.js
-</script>
-<script>
 // Included file: dojo/mobile/widgets/DojoMobileListItem.js
 egl.defineWidget("dojo.mobile.widgets","DojoMobileListItem","dojo.mobile.widgets","DojoMobileContainer","li",{"eglBaseClass":"eglMblListItem","constructor":function(){
 var _1=this;
@@ -12709,20 +12700,67 @@ return this.transition;
 // End of included file: dojo/mobile/widgets/DojoMobileListItem.js
 </script>
 <script>
-// Included file: libraries/fastclick_js.js
-egl.defineClass("libraries","fastclick_js",{"constructor":function(){
-},"init":function(){
-FastClick.attach(document.body);
+// Included file: dojo/mobile/widgets/DojoMobileOpener.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileOpener","dojo.mobile.widgets","DojoMobileContainer","div",{"eglBaseClass":"eglMblOpener","constructor":function(){
+var _1=this;
+_1.isModal=false;
+_1.children=[];
+require(["dojox/mobile/Opener"],function(op){
+_1._safeRender();
+});
+},"createDojoWidget":function(_3,_4){
+var _5=this;
+_3.style.minHeight="2em";
+_3.style.zIndex="10001";
+_5._addTabIndex(_3);
+if(_5.isModal){
+_5.dojoWidget=new dojox.mobile.Opener(_4,_3);
+}else{
+_5.dojoWidget=new dojox.mobile.Overlay(_4,_3);
+}
+_5.containerWidget=_5.dojoWidget;
+_5.synchronor.trigger(_5,"SYN_READY");
+_5.synchronor.wait(_5.children,"SYN_READY",function(){
+if(_5.children){
+_5.setChildren(_5.children);
+}
+if(_5.dojoWidget.startup){
+_5.dojoWidget.startup();
+}
+});
+},"removeChildren":function(_6){
+var _7=this._getContainerWidget(_6);
+this._removeChildren(1,_7);
+},"showOpener":function(_8,_9){
+var _a=this;
+try{
+if(_a.dojoWidget){
+_a.dojoWidget.show(_8?(_8.domNode||(_8.dojoWidget&&_8.dojoWidget.domNode)):null,[_9]);
+require(["dojo/sniff","dojo/mobile/utility/DisplayController","dojo/mobile/utility/BrowserUtility"],function(_b,dc,bu){
+if(_a.dojoWidget instanceof dojox.mobile.Tooltip){
+if(_b("ios")||_b("webkit")){
+dc.forceWidthUpdate(_a);
+}
+}
+});
+}
+}
+catch(e){
+console.error(e);
+}
+},"hideOpener":function(){
+var _e=this;
+if(_e.dojoWidget){
+_e.dojoWidget.hide();
+}
+},"setIsModal":function(_f){
+this.isModal=_f||false;
+},"getIsModal":function(){
+return this.isModal;
 }});
 
-// End of included file: libraries/fastclick_js.js
+// End of included file: dojo/mobile/widgets/DojoMobileOpener.js
 </script>
-
-<!-- Included file: libraries/includeFastClick.html -->
-<script type="text/javascript" src="libraries/fastclick.js"></script>
-
-<!-- End of included file: libraries/includeFastClick.html -->
-
 <script>
 // Included file: dojo/mobile/widgets/DojoMobileList.js
 egl.defineWidget("dojo.mobile.widgets","DojoMobileList","dojo.mobile.widgets","DojoMobileContainer","ul",{"standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout"],"eglBaseClass":"eglMblList","constructor":function(){
@@ -12789,6 +12827,30 @@ _d.setLogicalParent(this);
 }});
 
 // End of included file: dojo/mobile/widgets/DojoMobileList.js
+</script>
+<script>
+// Included file: dojo/mobile/widgets/DojoMobileButton.js
+egl.defineWidget("dojo.mobile.widgets","DojoMobileButton","dojo.mobile.widgets","DojoMobileBase","button",{"eglBaseClass":"eglMblBtn","standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout","change"],"constructor":function(){
+var _1=this;
+require(["dojox/mobile/Button"],function(){
+_1._safeRender();
+});
+},"createDojoWidget":function(_2,_3){
+var _4=this;
+_2.innerHTML=_4.text||"";
+_4.domNode=_2;
+_4.dojoWidget=new dojox.mobile.Button(_3,_2);
+this.dojoWidget.domNode.innerHTML=this.text||"";
+_4.synchronor.trigger(_4,"SYN_READY");
+_4.dojoWidget.startup();
+},"setText":function(_5){
+this.text=_5;
+if(this.domNode){
+this.domNode.innerHTML=this.text;
+}
+}});
+
+// End of included file: dojo/mobile/widgets/DojoMobileButton.js
 </script>
 <script>
 // Included file: com/ibm/egl/rui/loader/Helper.js
@@ -12941,68 +13003,6 @@ _28.eze$$asynch=egl.eze$$dynamicLoadAsynch==undefined?true:egl.eze$$dynamicLoadA
 // End of included file: com/ibm/egl/rui/loader/Helper.js
 </script>
 <script>
-// Included file: dojo/mobile/widgets/DojoMobileOpener.js
-egl.defineWidget("dojo.mobile.widgets","DojoMobileOpener","dojo.mobile.widgets","DojoMobileContainer","div",{"eglBaseClass":"eglMblOpener","constructor":function(){
-var _1=this;
-_1.isModal=false;
-_1.children=[];
-require(["dojox/mobile/Opener"],function(op){
-_1._safeRender();
-});
-},"createDojoWidget":function(_3,_4){
-var _5=this;
-_3.style.minHeight="2em";
-_3.style.zIndex="10001";
-_5._addTabIndex(_3);
-if(_5.isModal){
-_5.dojoWidget=new dojox.mobile.Opener(_4,_3);
-}else{
-_5.dojoWidget=new dojox.mobile.Overlay(_4,_3);
-}
-_5.containerWidget=_5.dojoWidget;
-_5.synchronor.trigger(_5,"SYN_READY");
-_5.synchronor.wait(_5.children,"SYN_READY",function(){
-if(_5.children){
-_5.setChildren(_5.children);
-}
-if(_5.dojoWidget.startup){
-_5.dojoWidget.startup();
-}
-});
-},"removeChildren":function(_6){
-var _7=this._getContainerWidget(_6);
-this._removeChildren(1,_7);
-},"showOpener":function(_8,_9){
-var _a=this;
-try{
-if(_a.dojoWidget){
-_a.dojoWidget.show(_8?(_8.domNode||(_8.dojoWidget&&_8.dojoWidget.domNode)):null,[_9]);
-require(["dojo/sniff","dojo/mobile/utility/DisplayController","dojo/mobile/utility/BrowserUtility"],function(_b,dc,bu){
-if(_a.dojoWidget instanceof dojox.mobile.Tooltip){
-if(_b("ios")||_b("webkit")){
-dc.forceWidthUpdate(_a);
-}
-}
-});
-}
-}
-catch(e){
-console.error(e);
-}
-},"hideOpener":function(){
-var _e=this;
-if(_e.dojoWidget){
-_e.dojoWidget.hide();
-}
-},"setIsModal":function(_f){
-this.isModal=_f||false;
-},"getIsModal":function(){
-return this.isModal;
-}});
-
-// End of included file: dojo/mobile/widgets/DojoMobileOpener.js
-</script>
-<script>
 // Included file: dojo/mobile/widgets/DojoMobileListCategory.js
 egl.defineWidget("dojo.mobile.widgets","DojoMobileListCategory","dojo.mobile.widgets","DojoMobileBase","li",{"standardEvents":["click","mousedown","mouseup","mouseover","mousemove","mouseout"],"eglBaseClass":"eglMblListCategory","constructor":function(){
 var _1=this;
@@ -13033,22 +13033,6 @@ this.style=_6.style;
 }});
 
 // End of included file: dojo/mobile/widgets/DojoMobileListCategory.js
-</script>
-
-<!-- Included file: libraries/includePhoneGap.html -->
-<script type="text/javascript" src="phonegap.js"></script>
-
-<!-- End of included file: libraries/includePhoneGap.html -->
-
-<script>
-// Included file: eu/imtech/firstproject/libraries/PhoneGap.js
-egl.defineRUIWidget("eu.imtech.firstproject.libraries","PhoneGap",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/eu/imtech/firstproject/libraries/PhoneGap.egl","eze$$runtimePropertiesFile":"eu/imtech/firstproject/libraries/PhoneGap","constructor":function(){
-this.jsrt$SysVar=new egl.egl.core.SysVar();
-},"toString":function(){
-return "[PhoneGap]";
-}});
-
-// End of included file: eu/imtech/firstproject/libraries/PhoneGap.js
 </script>
 <script>
 // Included file: dojo/mobile/utility/BrowserLib.js
@@ -13211,11 +13195,27 @@ return "[BaseSample]";
 
 // End of included file: dojo/mobile/samples/utility/BaseSample.js
 </script>
+
+<!-- Included file: libraries/includeCordova.html -->
+<script type="text/javascript" src="phonegap.js"></script>
+
+<!-- End of included file: libraries/includeCordova.html -->
+
+<script>
+// Included file: eu/imtech/firstproject/libraries/Cordova.js
+egl.defineRUIWidget("eu.imtech.firstproject.libraries","Cordova",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/eu/imtech/firstproject/libraries/Cordova.egl","eze$$runtimePropertiesFile":"eu/imtech/firstproject/libraries/Cordova","constructor":function(){
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+},"toString":function(){
+return "[Cordova]";
+}});
+
+// End of included file: eu/imtech/firstproject/libraries/Cordova.js
+</script>
 <script>
 // Included file: dojo/mobile/samples/Gallery.js
 egl.defineRUIHandler("dojo.mobile.samples","Gallery",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/Gallery.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/Gallery","constructor":function(){
-this.phoneGap=new egl.eu.imtech.firstproject.libraries.PhoneGap();
-egl.addEmbeddedWidget(this,"phoneGap");
+this.cordova=new egl.eu.imtech.firstproject.libraries.Cordova();
+egl.addEmbeddedWidget(this,"cordova");
 this.View=new egl.dojo.mobile.widgets.DojoMobileView();
 egl.addEmbeddedWidget(this,"View");
 this._viewAdvanceStyleSample=new egl.dojo.mobile.samples.perwidget.ViewAdvanceStyleSample();
@@ -13958,6 +13958,38 @@ return "[ListCategorySample]";
 
 // End of included file: dojo/mobile/samples/perwidget/ListCategorySample.js
 </script>
+<script>
+// Included file: libraries/barcode_js.js
+egl.defineClass("libraries","barcode_js",{"constructor":function(){
+},"scan":function(){
+console.log("scanning");
+var _1=cordova.require("cordova/plugin/BarcodeScanner");
+_1.scan(function(_2){
+alert("We got a barcode\n"+"Result: "+_2.text+"\n"+"Format: "+_2.format+"\n"+"Cancelled: "+_2.cancelled);
+console.log("Scanner result: \n"+"text: "+_2.text+"\n"+"format: "+_2.format+"\n"+"cancelled: "+_2.cancelled+"\n");
+console.log(_2);
+return _2.text;
+},function(_3){
+console.log("Scanning failed: ",_3);
+});
+},"encode":function(){
+var _4=cordova.require("cordova/plugin/BarcodeScanner");
+_4.encode(_4.Encode.TEXT_TYPE,"http://www.nhl.com",function(_5){
+alert("encode success: "+_5);
+},function(_6){
+alert("encoding failed: "+_6);
+});
+}});
+
+// End of included file: libraries/barcode_js.js
+</script>
+
+<!-- Included file: libraries/includeBarcodeScanner.html -->
+        <script type="text/javascript" src="barcodescanner.js"></script>
+        <script type="text/javascript" src="childbrowser.js"></script>
+
+<!-- End of included file: libraries/includeBarcodeScanner.html -->
+
 <script>
 // Included file: com/ibm/egl/rui/widgets/TextLabel.js
 egl.defineRUIWidget("com.ibm.egl.rui.widgets","TextLabel",{"eze$$fileName":"/com.ibm.egl.rui_4.2.2/EGLSource/com/ibm/egl/rui/widgets/TextLabel.egl","eze$$runtimePropertiesFile":"com/ibm/egl/rui/widgets/TextLabel","constructor":function(){
@@ -16752,6 +16784,25 @@ return "[IconContainerSample]";
 // End of included file: dojo/mobile/samples/perwidget/IconContainerSample.js
 </script>
 <script>
+// Included file: eu/imtech/firstproject/libraries/BarcodeScanner.js
+egl.defineRUILibrary("eu.imtech.firstproject.libraries","BarcodeScanner",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/eu/imtech/firstproject/libraries/BarcodeScanner.egl","eze$$runtimePropertiesFile":"eu/imtech/firstproject/libraries/BarcodeScanner","constructor":function(){
+if(egl.eu.imtech.firstproject.libraries.BarcodeScanner["$inst"]){
+return egl.eu.imtech.firstproject.libraries.BarcodeScanner["$inst"];
+}
+egl.eu.imtech.firstproject.libraries.BarcodeScanner["$inst"]=this;
+this.barcode_js=new egl.libraries.barcode_js();
+this.jsrt$SysVar=new egl.egl.core.SysVar();
+},"scan":function(){
+var _1=null;
+_1=this.barcode_js.scan();
+return _1;
+},"toString":function(){
+return "[BarcodeScanner]";
+}});
+
+// End of included file: eu/imtech/firstproject/libraries/BarcodeScanner.js
+</script>
+<script>
 // Included file: dojo/mobile/samples/perwidget/ButtonSample.js
 egl.defineRUIHandler("dojo.mobile.samples.perwidget","ButtonSample",{"eze$$fileName":"/eu.imtech.firstproject/EGLSource/dojo/mobile/samples/perwidget/ButtonSample.egl","eze$$runtimePropertiesFile":"dojo/mobile/samples/perwidget/ButtonSample","constructor":function(){
 this.intro=new egl.com.ibm.egl.rui.widgets.Div();
@@ -16761,6 +16812,7 @@ egl.addEmbeddedWidget(this,"View");
 this.button=new egl.dojo.mobile.widgets.DojoMobileButton();
 egl.addEmbeddedWidget(this,"button");
 this.jsrt$SysVar=new egl.egl.core.SysVar();
+new egl.eu.imtech.firstproject.libraries.BarcodeScanner();
 new egl.egl.core.SysLib();
 this.initialUI=[this.View];
 egl.checkNull(this.intro).setMargin(20);
@@ -16782,8 +16834,12 @@ this.button.getOnClick().appendElement(new egl.egl.jsrt.Delegate(this,egl.dojo.m
 this.button.setID("myBtnId");
 this.button.setClass("myBtnClass");
 },"myClick":function(e){
+var _3="";
+_3=(function(x){
+return x!==null?((x).toString()):"";
+})(egl.eu.imtech.firstproject.libraries.BarcodeScanner["$inst"].scan());
 egl.println("button pressed");
-this.button.setText("Button pressed");
+this.button.setText("Result: result");
 },"toString":function(){
 return "[ButtonSample]";
 }});
